@@ -18,6 +18,22 @@ public class Deck{
 			}
 			return deckOfCards;
 		}
+		
+		Card RandomCard(Card[][]card)
+		{
+			Card randomCard;
+			int tempRandomCard=0;
+			int tempRandomSuit=0;
+			Random random=new Random();
+			tempRandomCard=random.nextInt(12);
+			tempRandomSuit=random.nextInt(3);
+			randomCard=card[tempRandomSuit][tempRandomCard];
+			
+			
+			
+			return randomCard;
+		}
+		
 	
 	
 	
