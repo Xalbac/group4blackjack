@@ -1,13 +1,27 @@
 package group4blackjack;
 
-import java.util.Arrays;
+import java.util.Random;
 
-/****
- * 
- * The best version
- * 
- */
 public class Deck{
+	
+	int deckgenerator()
+	{
+		
+	}
+	
+	int deckrandomizer()
+	{
+		int min = 2;
+	    int max = 11;
+	    int range = (max - min);
+
+	    int random = new Random().nextInt(range + 1) + min;
+
+	    return random;
+	}
+	
+	
+	
 	
 	
 
