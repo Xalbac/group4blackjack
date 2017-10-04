@@ -13,7 +13,6 @@ public class Player {
 
 	public int hit() {
 		
-		Deck d = new Deck();
 		int card = 0;
 		
 		return card;
