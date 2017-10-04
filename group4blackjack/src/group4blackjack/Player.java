@@ -8,6 +8,8 @@ package group4blackjack;
 
 
 public class Player {
+	
+	String name;
 
 	public int hit() {
 		
