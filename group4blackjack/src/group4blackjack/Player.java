@@ -9,8 +9,13 @@ package group4blackjack;
 
 public class Player {
 
-	void hit() {
+	public int hit() {
 		
+		Deck d = new Deck();
+		
+		int card = 0;
+		
+		return card;
 	}
 	
 	void stay() {
