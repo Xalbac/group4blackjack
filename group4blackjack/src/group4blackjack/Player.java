@@ -11,16 +11,18 @@ public class Player {
 	
 	String name;
 
-	public int hit() {
+	static int hit() {
+		Deck d = new Deck();
 		
-		int card = 01;
+		int card = 0;
 		
 		return card;
+
 	}
 	
 	void stay() {
 		
-		System.out.println(name + " stands. What a chicken..");
+		System.out.println(name + " stands.");
 		
 	}
 
