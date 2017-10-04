@@ -4,21 +4,17 @@ import java.util.Scanner;
 
 public class GameMain
 {
-
-	private static float balance;
-	private static float bet;
-	private static Scanner scanner = new Scanner(System.in);
+	// Initialise everything we need.
+	private static float balance;								// User's money
+	private static float bet;									// User's bet
+	private static Scanner scanner = new Scanner(System.in);	// Define the input
 	
 	
-	
+	// Where the magic happens
 	public static void main(String[] args)
 	{
-		// TODO Auto-generated method stub
 		balance = 100;
 		boolean gameOver = false;
-		/*If we have money: Do while (money > 0)
-		{
-		}*/
 		
 		while (balance > 0 && !gameOver)
 		{
@@ -27,7 +23,7 @@ public class GameMain
 			
 			if (gameStart == "1")
 			{
-				//proceed to game
+				gameStart();
 			}
 			else if(gameStart == "2")
 			{
@@ -39,7 +35,13 @@ public class GameMain
 			}
 		}
 	}
+
+	private static void gameStart()
+	{
+		
+	}
 	
+	// What to do when the winner is announced.
 	private void winner()
 	{
 		int sumPlayer = 10;
