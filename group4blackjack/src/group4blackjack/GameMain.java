@@ -89,8 +89,8 @@ public class GameMain
 	// What to do when the winner is announced.
 	private void winner()
 	{
-		int sumPlayer = 10;
-		int sumDealer = 11;
+		int sumPlayer = 10;	//This will get the card ref
+		int sumDealer = 11;	//This will get the card ref
 		
 		if (sumPlayer>sumDealer && sumPlayer<=21 || sumDealer >21)
 		{
