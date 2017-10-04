@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class GameMain
 {
 
-	private static int balance;
+	private static float balance;
+	private static float bet;
 	private static Scanner scanner = new Scanner(System.in);
 	
 	
@@ -36,6 +37,29 @@ public class GameMain
 			{
 				System.out.println("Please use either 1 or 2");
 			}
+		}
+	}
+	
+	private void winner()
+	{
+		int sumPlayer = 10;
+		int sumDealer = 11;
+		
+		if (sumPlayer>sumDealer && sumPlayer<=21 || sumDealer >21)
+		{
+			System.out.println("You win!");
+			
+			this.balance = this.balance + this.bet + this.bet;
+		}
+		else if (sumPlayer == sumDealer)
+		{
+			System.out.println("Draw. You keep your money this time. ");
+			this.balance = this.balance + this.bet;
+		}
+		else
+		{
+			System.out.println("You lose!");
+			
 		}
 	}
 }
