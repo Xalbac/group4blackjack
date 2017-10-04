@@ -18,14 +18,14 @@ public class GameMain
 		
 		while (balance > 0 && !gameOver)
 		{
-			System.out.println("Do you want to play? [1] Or quit? [2]");
+			System.out.println("Do you want to play? [P] Or quit? [Q]");
 			String gameStart = scanner.next();
 			
-			if (gameStart == "1")
+			if (gameStart.compareToIgnoreCase("P") == 0)
 			{
-				gameStart();
+				System.out.println("Game starts");
 			}
-			else if(gameStart == "2")
+			else if(gameStart.compareToIgnoreCase("Q") == 0)
 			{
 				gameOver = true;
 			}
@@ -35,7 +35,7 @@ public class GameMain
 			}
 		}
 	}
-
+	 
 	private static void gameStart()
 	{
 		
