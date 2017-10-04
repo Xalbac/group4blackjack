@@ -10,7 +10,7 @@ package group4blackjack;
 public class Card<Suits> {
 	private Suits cardSuit;
 	private int cardNum;
-	private String[] numString = {"Ace","Two","Three","Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+	private String[] numString = {"2","3","4", "5", "6", "7", "8", "9", "10","11"};
 
 	public Card (Suits stype, int snum) {
 		this.cardSuit = stype;
