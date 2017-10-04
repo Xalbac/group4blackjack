@@ -82,7 +82,13 @@ public class GameMain
 	
 	private void dealerTurn()
 	{
-		
+		if (damian.tea == true)
+		{
+			if (damian.share == false)
+			{
+				damian.nice == false;
+			}
+		}
 	}
 	
 	
