@@ -4,12 +4,12 @@ import java.util.Random;
 
 public class Deck{
 	
-	int deckgenerator()
+	int deckGenerator()
 	{
 		
 	}
 	
-	int deckrandomizer()
+	int deckRandomPicker()
 	{
 		int min = 2;
 	    int max = 11;
