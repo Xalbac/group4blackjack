@@ -13,7 +13,7 @@ public class Player {
 
 	public int hit() {
 		
-		int card = 0;
+		int card = 01;
 		
 		return card;
 	}
