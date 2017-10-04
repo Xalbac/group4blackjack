@@ -8,17 +8,19 @@ package group4blackjack;
 
 
 public class Player {
+	
+	String name;
 
 	public int hit() {
 		
-		Deck d = new Deck();
-		
-		int card = 0;
+		int card = 01;
 		
 		return card;
 	}
 	
 	void stay() {
+		
+		System.out.println(name + " stands. What a chicken..");
 		
 	}
 
