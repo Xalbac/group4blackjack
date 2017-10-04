@@ -22,6 +22,12 @@ public class Card {
 	public void setSuit(int suit) {
 		this.suit = suit;
 	}
+	@Override
+	public String toString() {
+		return "Card [value=" + value + ", suit=" + suit + "]";
+	}
+	
+	
 	
 	
 	
