@@ -8,6 +8,7 @@ public class GameMain
 	private static float balance;								// User's money
 	private static float bet;									// User's bet
 	private static Scanner scanner = new Scanner(System.in);	// Define the input
+	private boolean playerTurnEnd = false;
 	
 	
 	// Where the magic happens
@@ -15,6 +16,8 @@ public class GameMain
 	{
 		balance = 100;
 		boolean gameOver = false;
+		
+		System.out.println("Welcome to group 4 blackjack!");
 		
 		while (balance > 0 && !gameOver)
 		{
@@ -27,6 +30,7 @@ public class GameMain
 			}
 			else if(gameStart.compareToIgnoreCase("Q") == 0)
 			{
+				System.out.println("Goodbye!");
 				gameOver = true;
 			}
 			else
@@ -39,6 +43,24 @@ public class GameMain
 	private static void gameStart()
 	{
 		
+	}
+	
+	private void playerHit()
+	{
+		/*
+		 * 
+		 * if (player.sum > 21)
+		 * {
+		 * 		die;
+		 * }
+		 *
+		 */
+	}
+	
+	private void playerStay()
+	{
+		System.out.println("Player stays. Dealer's turn");
+		playerTurnEnd = true;
 	}
 	
 	// What to do when the winner is announced.
