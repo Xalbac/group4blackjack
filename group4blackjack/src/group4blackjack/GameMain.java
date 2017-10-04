@@ -45,6 +45,23 @@ public class GameMain
 		
 	}
 	
+	private void playerTurn()
+	{
+		String answer;
+		System.out.println("Hit  [H] or stay [S]?");
+		
+		answer = scanner.next();
+		
+		if (answer.compareToIgnoreCase("H") == 0)
+		{
+			playerHit();
+		}
+		else
+		{
+			playerStay();
+		}
+	}
+	
 	private void playerHit()
 	{
 		/*
@@ -63,6 +80,12 @@ public class GameMain
 		playerTurnEnd = true;
 	}
 	
+	private void dealerTurn()
+	{
+		
+	}
+	
+	
 	// What to do when the winner is announced.
 	private void winner()
 	{
@@ -77,8 +100,7 @@ public class GameMain
 		}
 		else if (sumPlayer == sumDealer)
 		{
-			System.out.println("Draw. You keep your money this time. ");
-			this.balance = this.balance + this.bet;
+			System.out.println("Draw. You lose.");
 		}
 		else
 		{
