@@ -2,12 +2,16 @@ package group4blackjack;
 
 import java.util.Scanner;
 
-public class GameMain {
+public class GameMain
+{
 
 	private static int balance;
 	private static Scanner scanner = new Scanner(System.in);
 	
-	public static void main(String[] args) {
+	
+	
+	public static void main(String[] args)
+	{
 		// TODO Auto-generated method stub
 		balance = 100;
 		boolean gameOver = false;
@@ -22,7 +26,7 @@ public class GameMain {
 			
 			if (gameStart == "1")
 			{
-				
+				//proceed to game
 			}
 			else if(gameStart == "2")
 			{
@@ -33,9 +37,5 @@ public class GameMain {
 				System.out.println("Please use either 1 or 2");
 			}
 		}
-		
-		
-		
 	}
-
 }
