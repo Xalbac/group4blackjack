@@ -6,8 +6,15 @@ package group4blackjack;
  * 
  */
 
+
 public class Player {
+
+	void hit() {
+		
+	}
 	
-	
+	void stay() {
+		
+	}
 
 }
