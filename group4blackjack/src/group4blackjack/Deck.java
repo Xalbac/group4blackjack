@@ -7,5 +7,11 @@ package group4blackjack;
  */
 
 public class Deck {
+	
+
+	void Deckgenerator()
+	{
+	
+	}
 
 }
