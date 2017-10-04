@@ -3,11 +3,11 @@ package group4blackjack;
 import java.util.Random;
 
 public class Deck{
-	public static void main(String[] args) {
+	/*public static void main(String[] args) { //main print test of the deckOfCards
 		Deck d=new Deck();
 		Card[][] kort=d.cardGenerator();
 		System.out.println(kort);
-	}
+	}*/
 	
 
 		Card[][] cardGenerator()
@@ -38,6 +38,7 @@ public class Deck{
 			
 			return randomCard;
 		}
+		
 		
 	
 	
