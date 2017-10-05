@@ -42,14 +42,5 @@ public class Card {
 		return (o != null && o instanceof Card && ((Card) o).rank == rank && ((Card) o).suit == suit);
 	}
 	
-	public Card pullRandom() {
-	    if (Cards.isEmpty())
-	        return null;
-
-	    Card res = Cards.remove(randInt(0, Cards.size() - 1));
-	    if (res != null)
-	        PulledCards.add(res);
-	    return res;
-	}
 
 }
