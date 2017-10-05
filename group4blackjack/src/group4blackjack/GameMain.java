@@ -37,8 +37,15 @@ public class GameMain
 			if (gameStart.compareToIgnoreCase("P") == 0)
 			{
 				// If it's YES BOSS, then the game starts.
+				try
+				{
 				System.out.println("Game starts");
 			    gameStart();
+				}
+				catch(Exception e)
+				{
+					System.out.println(e);
+				}
 			}
 			else if(gameStart.compareToIgnoreCase("Q") == 0)
 			{
@@ -64,9 +71,10 @@ public class GameMain
 		//player's turn first. 
 		
 		Deck deck = new Deck();
-		deck.pullRandom();
-		System.out.println(deck);
+		
 		deck.CardsDeck();
+		System.out.println(deck);
+		deck.pullRandom();
 		System.out.println(deck);
 		deck.reset();
 		System.out.println(deck);
