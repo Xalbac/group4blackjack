@@ -73,7 +73,7 @@ public class GameMain
 		Deck deck = new Deck();
 		
 		deck.CardsDeck();
-		System.out.println(deck);
+		System.out.println(deck.toString());
 		System.out.println("How much you want to bet?");
 	}
 	
