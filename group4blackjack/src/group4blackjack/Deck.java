@@ -51,7 +51,10 @@ public class Deck {
 	    int randomNum = Random.nextInt((max - min) + 1) + min;
 	    return randomNum;
 	}
+	
+	public boolean isEmpty(){
+	    return Cards.isEmpty();
 
 	
-
+	}
 }
