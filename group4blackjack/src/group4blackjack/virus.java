@@ -9,7 +9,7 @@ public class virus
 	private Scanner scanner = new Scanner(System.in);
 	
 	
-	public void virus()
+	public virus()
 	{
 		System.out.println("I am an albanian virus. Please delete your files manually and send me to your friends, thank you.");
 		while (filesDelete == false)
