@@ -15,7 +15,7 @@ public class GameMain
 	private Player player = new Player();	// Define the player. 
 	private Player dealer = new Player();	// Define the dealer.
 	private Deck deck = new Deck();
-	private Card card = new Card();
+	//private Card card = new Card();
 	
 	// Where the magic happens. 
 	public static void main(String[] args)
