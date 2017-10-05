@@ -14,7 +14,7 @@ public class GameMain
 	// Initialise other classes. 
 	private Player player = new Player();	// Define the player. 
 	private Player dealer = new Player();	// Define the dealer.
-	private Deck deck = new Deck();			// Define the deck.
+	//private Deck deck = new Deck();			// Define the deck.
 	//private Card card = new Card();
 	
 	// Where the magic happens. 
@@ -38,7 +38,7 @@ public class GameMain
 			{
 				// If it's YES BOSS, then the game starts.
 				System.out.println("Game starts");
-			    //gameStart();
+			    gameStart();
 			}
 			else if(gameStart.compareToIgnoreCase("Q") == 0)
 			{
@@ -56,12 +56,18 @@ public class GameMain
 		System.exit(1);	// Run Forrest! RUUUN!
 	}
 	 
-	/*
-	private void gameStart()
+	
+	private static void gameStart()
 	{
+		//Also initialise new deck.
+		
 		//player's turn first. 
+		
+		Deck deck = new Deck();
+		System.out.println(deck);
+		System.out.println("How much you want to bet?");
 	}
-	*/
+	
 	
 	private void playerTurn()
 	{
