@@ -34,5 +34,27 @@ public class Deck {
 	        }
 	    }
 	}
+	
+	public Card pullRandom() {
+	    if (Cards.isEmpty())
+	        return null;
 
+	    Card res = Cards.remove(randInt(0, Cards.size() - 1));
+	    if (res != null)
+	        PulledCards.add(res);
+	    return res;
+	}
+	
+	public int randInt(int min, int max) {
+	    // nextInt is normally exclusive of the top value,
+	    // so add 1 to make it inclusive
+	    int randomNum = Random.nextInt((max - min) + 1) + min;
+	    return randomNum;
+	}
+	
+	public boolean isEmpty(){
+	    return Cards.isEmpty();
+
+	
+	}
 }
