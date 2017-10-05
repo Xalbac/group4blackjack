@@ -26,7 +26,9 @@ public class Deck {
 	public void reset() {
 	    PulledCards.clear();
 	    Cards.clear();
-	    /* Creating all possible cards... */
+	    
+	   /* Creating all possible cards... */
+	    
 	    for (Suits s : Suits.values()) {
 	        for (Ranks r : Ranks.values()) {
 	            Card c = new Card(r, s);
@@ -35,6 +37,11 @@ public class Deck {
 	    }
 	}
 	
+	
+
+	/*
+	 * get a random card and remove it from the deck
+	 */
 	public Card pullRandom() {
 	    if (Cards.isEmpty())
 	        return null;
