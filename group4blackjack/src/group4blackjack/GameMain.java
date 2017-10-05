@@ -64,6 +64,7 @@ public class GameMain
 		//player's turn first. 
 		
 		Deck deck = new Deck();
+		deck.pullRandom();
 		System.out.println(deck);
 		System.out.println("How much you want to bet?");
 	}
