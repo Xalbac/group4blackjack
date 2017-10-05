@@ -11,19 +11,13 @@ public class Player {
 	
 	String name;
 
-	static int hit() {
-		Deck d = new Deck();
-		
-		int card = 0;
-		
-		return card;
 
+	public String getName() {
+		return name;
 	}
-	
-	void stay() {
-		
-		System.out.println(name + " stands.");
-		
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
