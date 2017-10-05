@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class GameMain
 {
 	// Initialise everything we need.
-	private static float balance;								// User's money.
-	private static float bet;									// User's bet.
+	private static int balance;								// User's money.
+	private static int bet;									// User's bet.
 	private boolean playerTurnEnd = false;						// Set players end turn to false, so player can play.
 	private static Scanner scanner = new Scanner(System.in);	// Start scanner. 
 	private static boolean GameOver = false;	// Set gameOver to false. 
@@ -24,13 +24,13 @@ public class GameMain
 
 		
 		// Welcome message. 
-		System.out.println("Welcome to group 4 blackjack!\nYou have 100 credits to start with.");
+		System.out.println("Welcome to group 4 blackjack!\nYou have 100 credits to start with.\n");
 		
 		// If the player monies are enough AND the game is not over, play.
 		while (balance > 0 && !GameOver)
 		{
 			// Ask the player if they are absolutely sure, he/she (we're not transphobic) wants to play this steaming pile of rubber tires. 
-			System.out.println("Do you want to play? [P] Or quit? [Q]");
+			System.out.println("Do you want to play? [P] Or quit? [Q]\n");
 			String gameStart = scanner.next();	// Check what he/she wants to play. 
 			
 			// If the LGBTQ player wants to play this game, check for answers they typed. 
@@ -39,7 +39,7 @@ public class GameMain
 				// If it's YES BOSS, then the game starts.
 				try
 				{
-				System.out.println("Game starts");
+				System.out.println("Game starts\n");
 			    gameStart();
 				}
 				catch(Exception e)
@@ -49,6 +49,7 @@ public class GameMain
 			}
 			else if(gameStart.compareToIgnoreCase("Q") == 0)
 			{
+				// Over the game
 				gameOver();
 			}
 			else
@@ -71,10 +72,14 @@ public class GameMain
 		//player's turn first. 
 		
 		Deck deck = new Deck();
+		Card card1 = deck.pullRandom();
 		
-		deck.CardsDeck();
-		System.out.println(deck.toString());
-		System.out.println("How much you want to bet?");
+		System.out.println(deck);
+		System.out.println(card1);
+		
+		System.out.println("How much you want to bet?\n");
+		//bet = scanner.nextInt();
+		
 	}
 	
 	
