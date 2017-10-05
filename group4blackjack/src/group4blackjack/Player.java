@@ -11,7 +11,17 @@ public class Player {
 	
 	String name;
 
-
+	
+	public void hit() {
+		
+		System.out.println("Player hits");
+		
+	}
+	
+	void stay() {
+		System.out.println(name + "stands");
+	}
+	
 	public String getName() {
 		return name;
 	}

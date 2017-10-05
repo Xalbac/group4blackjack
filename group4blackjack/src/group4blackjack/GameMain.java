@@ -9,6 +9,7 @@ public class GameMain
 	private static float bet;									// User's bet.
 	private boolean playerTurnEnd = false;						// Set players end turn to false, so player can play.
 	private static Scanner scanner = new Scanner(System.in);	// Start scanner. 
+	private static boolean GameOver = false;	// Set gameOver to false. 
 	
 	// Initialise other classes. 
 	private Player player = new Player();	// Define the player. 
@@ -20,13 +21,13 @@ public class GameMain
 	public static void main(String[] args)
 	{
 		balance = 100;				// Set user's balance. 
-		boolean gameOver = false;	// Set gameOver to false. 
+
 		
 		// Welcome message. 
 		System.out.println("Welcome to group 4 blackjack!\nYou have 100 credits to start with.");
 		
 		// If the player monies are enough AND the game is not over, play.
-		while (balance > 0 && !gameOver)
+		while (balance > 0 && !GameOver)
 		{
 			// Ask the player if they are absolutely sure, he/she (we're not transphobic) wants to play this steaming pile of rubber tires. 
 			System.out.println("Do you want to play? [P] Or quit? [Q]");
@@ -37,14 +38,11 @@ public class GameMain
 			{
 				// If it's YES BOSS, then the game starts.
 				System.out.println("Game starts");
-				this.gameStart();
+			    //gameStart();
 			}
 			else if(gameStart.compareToIgnoreCase("Q") == 0)
 			{
-				// If there are no players on the field, the coach goes home. 
-				System.out.println("Goodbye!");
-				gameOver = true;
-				System.exit(1); // Run... while you still can...
+				gameOver();
 			}
 			else
 			{
@@ -58,10 +56,12 @@ public class GameMain
 		System.exit(1);	// Run Forrest! RUUUN!
 	}
 	 
-	gameStart()
+	/*
+	private void gameStart()
 	{
-		
+		//player's turn first. 
 	}
+	*/
 	
 	private void playerTurn()
 	{
@@ -72,7 +72,7 @@ public class GameMain
 		
 		if (answer.compareToIgnoreCase("H") == 0)
 		{
-			playerHit();
+			player.hit();
 		}
 		else
 		{
@@ -84,7 +84,7 @@ public class GameMain
 	{
 		
 		
-		player.hit();
+		//player.hit();
 		/*
 		 * 
 		 * if (player.sum > 21)
@@ -97,7 +97,7 @@ public class GameMain
 	
 	private void playerStay()
 	{
-		player.stay();
+		//player.stay();
 		System.out.println("Player stays. Dealer's turn");
 		playerTurnEnd = true;
 	}
@@ -106,7 +106,7 @@ public class GameMain
 	{
 		if (playerTurnEnd == true)
 		{
-			if (dealer.)
+			//LOL
 		}
 
 		
@@ -116,6 +116,7 @@ public class GameMain
 	// What to do when the winner is announced.
 	private void winner()
 	{
+		//This is justa test
 		int sumPlayer = 10;	//This will get the card ref
 		int sumDealer = 11;	//This will get the card ref
 		
@@ -134,5 +135,12 @@ public class GameMain
 			System.out.println("You lose!");
 			
 		}
+	}
+	
+	private static void gameOver()
+	{
+		System.out.println("Game over!");
+		System.exit(1);
+		GameOver = true;
 	}
 }
