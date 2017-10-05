@@ -8,6 +8,8 @@ public class GameMain
 	private static float balance;								// User's money
 	private static float bet;									// User's bet
 	private boolean playerTurnEnd = false;
+	private Scanner scanner = new Scanner(System.in);
+	private Player player = new Player();
 	
 	
 	// Where the magic happens
@@ -34,17 +36,20 @@ public class GameMain
 			{
 				System.out.println("Goodbye!");
 				gameOver = true;
+				System.exit(1);
 			}
 			else
 			{
 				System.out.println("Please use either 1 or 2");
 			}
 		}
+		System.out.println("You have no monies to play :( ");
+		System.exit(1);
 	}
 	 
 	private static void gameStart()
 	{
-		private String playerName;
+		
 	}
 	
 	private void playerTurn()
@@ -66,6 +71,9 @@ public class GameMain
 	
 	private void playerHit()
 	{
+		
+		
+		player.hit();
 		/*
 		 * 
 		 * if (player.sum > 21)
@@ -78,13 +86,19 @@ public class GameMain
 	
 	private void playerStay()
 	{
+		player.stay();
 		System.out.println("Player stays. Dealer's turn");
 		playerTurnEnd = true;
 	}
 	
 	private void dealerTurn()
 	{
+		if (playerTurnEnd == true)
+		{
+			if (dealer.)
+		}
 
+		
 	}
 	
 	
