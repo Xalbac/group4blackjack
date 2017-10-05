@@ -66,6 +66,12 @@ public class GameMain
 		Deck deck = new Deck();
 		deck.pullRandom();
 		System.out.println(deck);
+		deck.CardsDeck();
+		System.out.println(deck);
+		deck.reset();
+		System.out.println(deck);
+		deck.randInt(2, 12);
+		System.out.println(deck);
 		System.out.println("How much you want to bet?");
 	}
 	
