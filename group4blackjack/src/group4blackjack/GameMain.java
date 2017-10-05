@@ -39,8 +39,8 @@ public class GameMain
 				// If it's YES BOSS, then the game starts.
 				try
 				{
-				System.out.println("Game starts\n");
-			    gameStart();
+					System.out.println("Game starts\n");
+					gameStart();
 				}
 				catch(Exception e)
 				{
