@@ -14,7 +14,7 @@ public class GameMain
 	// Initialise other classes. 
 	private Player player = new Player();	// Define the player. 
 	private Player dealer = new Player();	// Define the dealer.
-	private Deck deck = new Deck();
+	private Deck deck = new Deck();			// Define the deck.
 	//private Card card = new Card();
 	
 	// Where the magic happens. 
