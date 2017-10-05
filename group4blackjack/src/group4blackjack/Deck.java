@@ -56,9 +56,6 @@ public class Deck {
 	
 	}
 
-	@Override
-	public String toString() {
-		return "Deck [Cards=" + Cards + ", PulledCards=" + PulledCards + ", Random=" + Random + "]";
-	}
+
 	
 }
