@@ -12,9 +12,9 @@ public class Player {
 	String name;
 
 	
-	public int hit() {
+	public void hit() {
 		
-		return 0;
+		System.out.println("Player hits");
 		
 	}
 	

@@ -72,7 +72,7 @@ public class GameMain
 		
 		if (answer.compareToIgnoreCase("H") == 0)
 		{
-			playerHit();
+			player.hit();
 		}
 		else
 		{
