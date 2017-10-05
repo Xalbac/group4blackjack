@@ -1,6 +1,7 @@
-public enum Suits{
+public enum Suits
+{
 	HEARTS,
 	DIAMONDS,
 	SPADES,
-	CIRCLES
+	CIRCLES,
 }
