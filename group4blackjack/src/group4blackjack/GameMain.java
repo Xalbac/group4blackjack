@@ -28,8 +28,7 @@ public class GameMain
 			
 			if (gameStart.compareToIgnoreCase("P") == 0)
 			{
-				System.out.println("What is your name?");
-				playerName = scanner.nextLine();
+				System.out.println("Game starts");
 			}
 			else if(gameStart.compareToIgnoreCase("Q") == 0)
 			{
