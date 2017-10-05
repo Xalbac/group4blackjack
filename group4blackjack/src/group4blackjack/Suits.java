@@ -1,3 +1,5 @@
+package group4blackjack;
+
 public enum Suits
 {
 	HEARTS,
