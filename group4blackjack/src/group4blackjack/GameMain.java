@@ -5,46 +5,54 @@ import java.util.Scanner;
 public class GameMain
 {
 	// Initialise everything we need.
-	private static float balance;								// User's money
-	private static float bet;									// User's bet
-	private boolean playerTurnEnd = false;
-	private Scanner scanner = new Scanner(System.in);
-	private Player player = new Player();
+	private static float balance;								// User's money.
+	private static float bet;									// User's bet.
+	private boolean playerTurnEnd = false;						// Set players end turn to false, so player can play.
+	private static Scanner scanner = new Scanner(System.in);	// Start scanner. 
+	
+	// Initialise other classes. 
+	private Player player = new Player();	// Define the player. 
 	
 	
-	// Where the magic happens
+	// Where the magic happens. 
 	public static void main(String[] args)
 	{
-		balance = 100;
-		boolean gameOver = false;
+		balance = 100;				// Set user's balance. 
+		boolean gameOver = false;	// Set gameOver to false. 
 		
-		Scanner scanner = new Scanner(System.in);
-		String playerName;
-		
+		// Welcome message. 
 		System.out.println("Welcome to group 4 blackjack!");
 		
+		// If the player monies are enough AND the game is not over, play.
 		while (balance > 0 && !gameOver)
 		{
+			// Ask the player if they are absolutely sure, he/she (we're not transphobic) wants to play this steaming pile of rubber tires. 
 			System.out.println("Do you want to play? [P] Or quit? [Q]");
-			String gameStart = scanner.next();
+			String gameStart = scanner.next();	// Check what he/she wants to play. 
 			
+			// If the LGBTQ player wants to play this game, check for answers they typed. 
 			if (gameStart.compareToIgnoreCase("P") == 0)
 			{
+				// If it's YES BOSS, then the game starts.
 				System.out.println("Game starts");
 			}
 			else if(gameStart.compareToIgnoreCase("Q") == 0)
 			{
+				// If there are no players on the field, the coach goes home. 
 				System.out.println("Goodbye!");
 				gameOver = true;
-				System.exit(1);
+				System.exit(1); // Run... while you still can...
 			}
 			else
 			{
+				// Tell the player they need to go back to elementary school and re-learn numbers. 
 				System.out.println("Please use either 1 or 2");
 			}
 		}
+		
+		// IF the player has no monies, tell them they are poor and should get a job. 
 		System.out.println("You have no monies to play :( ");
-		System.exit(1);
+		System.exit(1);	// Run Forrest! RUUUN!
 	}
 	 
 	private static void gameStart()
