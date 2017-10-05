@@ -12,7 +12,9 @@ public class GameMain
 	
 	// Initialise other classes. 
 	private Player player = new Player();	// Define the player. 
-	
+	private Player dealer = new Player();	// Define the dealer.
+	private Deck deck = new Deck();
+	private Card card = new Card();
 	
 	// Where the magic happens. 
 	public static void main(String[] args)
@@ -21,7 +23,7 @@ public class GameMain
 		boolean gameOver = false;	// Set gameOver to false. 
 		
 		// Welcome message. 
-		System.out.println("Welcome to group 4 blackjack!");
+		System.out.println("Welcome to group 4 blackjack!\nYou have 100 credits to start with.");
 		
 		// If the player monies are enough AND the game is not over, play.
 		while (balance > 0 && !gameOver)
@@ -35,6 +37,7 @@ public class GameMain
 			{
 				// If it's YES BOSS, then the game starts.
 				System.out.println("Game starts");
+				this.gameStart();
 			}
 			else if(gameStart.compareToIgnoreCase("Q") == 0)
 			{
@@ -46,7 +49,7 @@ public class GameMain
 			else
 			{
 				// Tell the player they need to go back to elementary school and re-learn numbers. 
-				System.out.println("Please use either 1 or 2");
+				System.out.println("Please use either P or Q");
 			}
 		}
 		
@@ -55,7 +58,7 @@ public class GameMain
 		System.exit(1);	// Run Forrest! RUUUN!
 	}
 	 
-	private static void gameStart()
+	gameStart()
 	{
 		
 	}
