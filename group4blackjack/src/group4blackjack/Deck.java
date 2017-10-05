@@ -46,8 +46,6 @@ public class Deck {
 	}
 	
 	public int randInt(int min, int max) {
-	    // nextInt is normally exclusive of the top value,
-	    // so add 1 to make it inclusive
 	    int randomNum = Random.nextInt((max - min) + 1) + min;
 	    return randomNum;
 	}
