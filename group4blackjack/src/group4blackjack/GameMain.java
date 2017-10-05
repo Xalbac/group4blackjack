@@ -7,7 +7,6 @@ public class GameMain
 	// Initialise everything we need.
 	private static float balance;								// User's money
 	private static float bet;									// User's bet
-	private static Scanner scanner = new Scanner(System.in);	// Define the input
 	private boolean playerTurnEnd = false;
 	
 	
@@ -16,6 +15,9 @@ public class GameMain
 	{
 		balance = 100;
 		boolean gameOver = false;
+		
+		Scanner scanner = new Scanner(System.in);
+		String playerName;
 		
 		System.out.println("Welcome to group 4 blackjack!");
 		
@@ -42,7 +44,7 @@ public class GameMain
 	 
 	private static void gameStart()
 	{
-		
+		private String playerName;
 	}
 	
 	private void playerTurn()
