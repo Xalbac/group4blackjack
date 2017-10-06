@@ -3,40 +3,34 @@ package group4blackjack;
 import group4blackjack.Deck.Ranks;
 import group4blackjack.Deck.Suits;
 
-public class Card {
+public class Card
+{
+	private Suits suit;		// Initialise suits.
+	private Ranks value;	// Initialise ranks, or value. Why is it called ranks?
 
-	
-	private Suits suit;
-	private Ranks rank;
-
-
-	
-	public Card(Suits suit, Ranks rank) {
-		super();
+	// Constructor for the values. 
+	public Card(Suits suit, Ranks value)
+	{
 		this.suit = suit;
-		this.rank = rank;
+		this.value = value;
 	}
 
-
+	// Output as string. 
 	public String toString()
 	{
-		return "Card rank= " + rank + " of, suit= " + suit;
+		return "Card rank= " + value + " of, suit= " + suit;
 	}
-
-
+	
+	// Getters and setters. 
+	// Returns suit.
 	public Suits getSuit()
-	{
-		return suit;
-	}
-
-	public Ranks getRank()
-	{
-		return rank;
-	}
-
-	public Suits getValue()
 	{
 		return this.suit;
 	}
-	
+
+	// Returns value. 
+	public Ranks getValue()
+	{
+		return this.value;
+	}
 }
