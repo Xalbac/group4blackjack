@@ -22,17 +22,12 @@ public class Card {
 
 	public Suits getSuit()
 	{
-		return suit;
+		return this.suit;
 	}
 
 	public Ranks getRank()
 	{
-		return rank;
-	}
-
-	public Suits getValue()
-	{
-		return this.suit;
+		return this.rank;
 	}
 	/*
 	 * }
