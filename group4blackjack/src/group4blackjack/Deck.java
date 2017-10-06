@@ -42,9 +42,10 @@ public class Deck {
 	/*
 	 * get a random card and remove it from the deck
 	 */
-	public Card pullRandom() {
-	    if (Cards.isEmpty())
-	        return null;
+	public Card pullRandom()
+	{
+	    /*if (Cards.isEmpty())
+	        return null;*/
 
 	    Card res = Cards.remove(randInt(0, Cards.size() - 1));
 	    if (res != null)
