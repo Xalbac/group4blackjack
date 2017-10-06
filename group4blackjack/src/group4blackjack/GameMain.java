@@ -6,16 +6,16 @@ import java.util.Scanner;
 public class GameMain
 {
 	// Initialise everything we need.
-	private static int balance;								// User's money.
-	private static int bet;									// User's bet.
+	private static int balance;									// User's money.
+	private static int bet;										// User's bet.
 	private boolean playerTurnEnd = false;						// Set players end turn to false, so player can play.
 	private static Scanner scanner = new Scanner(System.in);	// Start scanner. 
-	private static boolean GameOver = false;	// Set gameOver to false. 
+	private static boolean GameOver = false;					// Set gameOver to false. 
 	
 	// Initialise other classes. 
 	private Player player = new Player();	// Define the player. 
 	private Player dealer = new Player();	// Define the dealer.
-	//private Deck deck = new Deck();			// Define the deck.
+	//private Deck deck = new Deck();		// Define the deck.
 	//private Card card = new Card();
 	
 	// Where the magic happens. 
@@ -65,7 +65,7 @@ public class GameMain
 		System.exit(1);	// Run Forrest! RUUUN!
 	}
 	 
-	
+	// This is where the game plays. 
 	private static void gameStart()
 	{
 		//Also initialise new deck.
@@ -82,7 +82,7 @@ public class GameMain
 		
 	}
 	
-	
+	// Player's turn.
 	private void playerTurn()
 	{
 		String answer;
@@ -100,6 +100,7 @@ public class GameMain
 		}
 	}
 	
+	/*
 	private void playerHit()
 	{
 		
