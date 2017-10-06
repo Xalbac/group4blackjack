@@ -10,16 +10,15 @@ package group4blackjack;
 public class Player {
 	
 	String name;
-
 	
 	public void hit() {
 		
-		System.out.println("Player hits");
+		System.out.println(name+ " hits");
 		
 	}
 	
-	void stay() {
-		System.out.println(name + "stands");
+	public void stay() {
+		System.out.println(name + " stands");
 	}
 	
 	public String getName() {
