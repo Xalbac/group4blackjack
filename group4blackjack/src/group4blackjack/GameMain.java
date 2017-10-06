@@ -5,13 +5,107 @@ import java.util.Scanner;
 
 public class GameMain
 {
+	public static void main(String[] args)
+	{
+		Deck deckPlay = new Deck();
+		Deck cardsPlayer = new Deck();
+		Deck cardsDealer = new Deck();
+		Player player = new Player();
+		Player dealer = new Player();
+		
+		Scanner ui = new Scanner(System.in);
+		
+		int money = 100;
+		boolean playerTurn = true;
+		boolean dealerTurn = false;
+		int bet = 0;
+		
+		deckPlay.FillDeckWithCards();
+		deckPlay.shuffleDeck();
+		
+		System.out.println("Welcome to the best blackjack ever!\n");
+		System.out.println("What is your name?");
+		String answer = ui.next();
+		player.setName(answer);
+		
+		System.out.println("You have: " + money);
+		
+		while (money > 0)
+		{
+			System.out.println("How much would you liek to bet?");
+			bet = ui.nextInt();
+			if (bet > money)
+			{
+				System.out.println("You can't bet more than you have.");
+			}
+			else
+			{
+				System.out.println("Dealing cards.");
+				
+				cardsPlayer.cardDraw(deckPlay);
+				cardsPlayer.cardDraw(deckPlay);
+				
+				cardsDealer.cardDraw(deckPlay);
+				cardsDealer.cardDraw(deckPlay);
+				
+				System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + " " + cardsPlayer.cardGet(1).toString());
+				System.out.println("Your cards are valud at: " + cardsPlayer.cardsValue());
+				System.out.println("Dealer cards: " + cardsDealer.cardGet(0).toString() + " and 1 hidden.");
+
+				while (playerTurn = true)
+				{
+					System.out.println("Would you like to [H] hit or [S] stand?");
+					String answer2 = ui.next();
+					if (answer2.compareToIgnoreCase("h") == 0)
+					{
+						cardsPlayer.cardDraw(deckPlay);
+						System.out.println("You draw: " + cardsPlayer.cardGet(cardsPlayer.deckSize()-1).toString());
+						
+						if (cardsPlayer.cardsValue() > 21)
+						{
+							System.out.println("Busted!");
+							money -= bet;
+							playerTurn = false;
+							break;
+						}
+					}
+					else if (answer2.compareToIgnoreCase("s") == 0)
+					{
+						System.out.println("Player stands.");
+						playerTurn = false;
+						break;
+					}
+					else
+					{
+						System.out.println("Please use either [H] or [S]");
+					}
+				}
+				
+				if ((cardsDealer.cardsValue() > cardsPlayer.cardsValue()) && playerTurn == false && dealerTurn == true;)
+				{
+					System.out.println("Dealer wins!" + cardsDealer.cardsValue() + " against yours: " + cardsPlayer.cardsValue());
+					money -= bet;
+				}
+				
+				while ((cardsDealer.cardsValue() > 17) && playerTurn == false & dealerTurn == true)
+				{
+					cardsDealer.cardDraw(deckPlay);
+					System.out.println("Dealer draws: " + cardsDealer.cardGet(cardsDealer.deckSize()-1).toString());
+				}
+			}
+		}
+	}
+	
+	/*
 	// Initialise everything we need.
 	private static int money;									// User's money.
 	private static int bet;										// User's bet.
 	private boolean playerTurnEnd = false;						// Set players end turn to false, so player can play.
 	private static Scanner scanner = new Scanner(System.in);	// Start scanner. 
 	private static boolean GameOver = false;					// Set gameOver to false. 
+	private static boolean GameStarted = false;
 	
+
 	// Initialise other classes. 
 	private static Player player = new Player();	// Define the player. 
 	private static Player dealer = new Player();	// Define the dealer.
@@ -19,14 +113,15 @@ public class GameMain
 	// Where the magic happens. 
 	public static void main(String[] args)
 	{
-		money = 100;				// Set user's balance. 
+		money = 100;	// Set user's balance. 
 
+		
 		
 		// Welcome message. 
 		System.out.println("Welcome to group 4 blackjack!\nYou have 100 credits to start with.\n");
 		
 		// If the player monies are enough AND the game is not over, play.
-		while (money > 0 && !GameOver)
+		while (money > 0 && !GameOver && !GameStarted)
 		{
 			// Ask the player if they are absolutely sure, he/she (we're not transphobic) wants to play this steaming pile of rubber tires. 
 			System.out.println("Do you want to play? [P] Or quit? [Q]\n");
@@ -40,6 +135,7 @@ public class GameMain
 				{
 					System.out.println("Game starts\n");
 					gameStart();
+					GameStarted = true;
 				}
 				catch(Exception e)
 				{
@@ -92,7 +188,7 @@ public class GameMain
 			cardsDealer.cardDraw(deckPlay);
 			cardsDealer.cardDraw(deckPlay);
 			
-			System.out.println("Your cards: "+cardsPlayer.toString()+"\n Your deck is valued at: " + cardsPlayer.cardsValue());
+			System.out.println("Your cards: "+cardsPlayer.cardGet(0).toString() + cardsPlayer.cardGet(1).toString()+"\n Your deck is valued at: " + cardsPlayer.cardsValue());
 			System.out.println("Dealer hand: " + cardsDealer.cardGet(0).toString() + " and 1 hidden.");
 			
 			playerTurn();
@@ -112,9 +208,13 @@ public class GameMain
 		{
 			player.hit();
 		}
-		else
+		else if (answer.compareToIgnoreCase("S") == 0)
 		{
 			player.stay();
+		}
+		else
+		{
+			System.out.println("Please use either [H] or [S]");
 		}
 	}
 	
@@ -131,7 +231,7 @@ public class GameMain
 		 * 		die;
 		 * }
 		 *
-		 */
+		 
 	
 	private void playerStay()
 	{
@@ -180,5 +280,5 @@ public class GameMain
 		System.out.println("Game over!");
 		System.exit(1);
 		GameOver = true;
-	}
+	}*/
 }
