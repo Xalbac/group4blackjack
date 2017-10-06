@@ -5,20 +5,20 @@ import group4blackjack.Deck.Suits;
 
 public class Card {
 
-	private Ranks rank;	// Initialise rank OR VALUE. WHy is it called rank?
+	private Ranks value;	// Initialise rank OR VALUE. Why is it called rank? Who came up with that idea?
 	private Suits suit;	// Initialise suit. 
 
 	// Generate card.
-	public Card(Ranks rank, Suits suit)
+	public Card(Ranks value, Suits suit)
 	{
-		this.rank = rank;
-		this.suit = suit;
+		this.value = value;	// Set the Value of the card.
+		this.suit = suit;	// Set the suit of the card.
 	}
 	
 	// So we can see what card it is.
 	public String toString()
 	{
-		return "Card rank= " + rank + " of, suit= " + suit;
+		return "Card rank= " + value + " of, suit= " + suit;
 	}
 
 	// Return the suit value.
@@ -28,8 +28,8 @@ public class Card {
 	}
 
 	// Return the rank value. 
-	public Ranks getRank()
+	public Ranks getValue()
 	{
-		return this.rank;
+		return this.value;
 	}
 }
