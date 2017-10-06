@@ -20,7 +20,6 @@ public class Deck {
 	    Random = new Random();
 	    PulledCards = new ArrayList<Card>();
 	    Cards = new ArrayList<Card>(Suits.values().length * Ranks.values().length);
-	    reset();
 	}
 	
 	public void reset() {
@@ -39,17 +38,30 @@ public class Deck {
 	
 	
 
-	/*
-	 * get a random card and remove it from the deck
-	 */
-	public Card pullRandom() {
-	    if (Cards.isEmpty()) 
-	        return null;
 
-	    Card randomcard = Cards.remove(randInt(0, Cards.size() - 1));
+	public Card pullRandom() {
+		
+		//either pull one random card and remove it from the pack....
+		
+	   /* if (Cards.isEmpty()) 
+	        return null;*/
+		
+		/*Card randomcard = Cards.remove(randInt(0, Cards.size() - 1));  
 	    if (randomcard != null)
 	        PulledCards.add(randomcard);
-	    return randomcard;
+	    return randomcard;*/
+		
+		//...or take one card and leave it in the pack
+	    
+	    if (Cards.isEmpty()) {
+	    	
+	    }
+	   
+
+	    Card res = Cards.get(randInt(0, Cards.size() - 1));
+	    return res;
+
+	   
 	}
 	
 	public int randInt(int min, int max) {

@@ -1,5 +1,6 @@
 package group4blackjack;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameMain
@@ -71,10 +72,9 @@ public class GameMain
 		
 		//player's turn first. 
 		
-		Deck deck = new Deck();
-		Card card1 = deck.pullRandom();
+		//Deck deck = new Deck();
 		
-		System.out.println(deck);
+		//System.out.println(deck);
 		System.out.println(card1);
 		
 		System.out.println("How much you want to bet?\n");

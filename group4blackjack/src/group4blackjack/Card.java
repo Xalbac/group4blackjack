@@ -13,6 +13,13 @@ public class Card {
 		this.rank = rank;
 		this.suit = suit;
 	}
+	
+
+	@Override
+	public String toString() {
+		return "Card rank=" + rank + ", suit=" + suit;
+	}
+
 
 	public Suits getSuit() {
 		return suit;
@@ -22,8 +29,8 @@ public class Card {
 		return rank;
 	}
 
-	public int getValue() {
-		return rank.ordinal() + 2;
+	public Suits getValue() {
+		return this.suit;
 	}
 	/*
 	 * }
@@ -36,11 +43,13 @@ public class Card {
 	 * 
 	 * public void setSuit(Suits suit) { this.suit = suit; }
 	 */
+	
+	//Some stuff we do not need \/
 
-	@Override
+	/*@Override
 	public boolean equals(Object o) {
 		return (o != null && o instanceof Card && ((Card) o).rank == rank && ((Card) o).suit == suit);
-	}
+	}*/
 	
 	
 	
