@@ -68,14 +68,12 @@ public class GameMain
 	// This is where the game plays. 
 	private static void gameStart()
 	{
-		//Also initialise new deck.
-		//System.out.println("How much you want to bet?\n");
-		//bet = scanner.nextInt();
-		
-		System.out.println("YOur name");
-		String answer = scanner.nextLine();
+		System.out.println("Your name? ");
+		String answer = scanner.next();
 		player.setName(answer);
 		System.out.println(player.getName());
+		System.out.println("Welcome " + player.getName() + ". How much would you liek to bet?");
+		String 
 	}
 	
 	// Player's turn.
