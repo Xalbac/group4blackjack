@@ -92,8 +92,9 @@ public class Deck {
 
 	// Calculate value of the deck
 	public int cardsValue() {
-		int entireValue = 0;	// At
-		int aces = 0;
+		int entireValue = 0;	// At initialise, set the value of deck to 0.
+		int aces = 0;			// At initialise, set the value of aces to 0.
+		
 		// Value of every card in the deck
 		for (Card oneCard : this.cards) {
 			// All values for cards
