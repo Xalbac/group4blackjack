@@ -108,4 +108,10 @@ public class Deck
 	{
 		return this.cards.size();
 	}
+	
+	//Calculate value of the deck
+	public int cardsValue()
+	{
+		
+	}
 }
