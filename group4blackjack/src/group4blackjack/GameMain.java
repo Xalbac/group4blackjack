@@ -74,7 +74,7 @@ public class GameMain
 		Deck deck = new Deck();
 		Card card1 = deck.pullRandom();
 		
-		//System.out.println(deck);
+		System.out.println(deck);
 		System.out.println(card1);
 		
 		System.out.println("How much you want to bet?\n");
