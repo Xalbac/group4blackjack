@@ -73,10 +73,39 @@ public class Deck
 		this.cards.remove(i);
 	}
 	
+	// Add cards to the deck. 
+	public void cardAdd(Card cardAdd)
+	{
+		this.cards.add(cardAdd);
+	}
 	
-	public void cardAdd(Deck comingFrom)
+	// Draws a card from the deck. 
+	public void cardDraw(Deck comingFrom)
 	{
 		this.cards.add(comingFrom.cardGet(0));
 		comingFrom.cardRemove(0);
+	}
+	
+	// Moves created cards to deck. 
+	public void moveCardsToDeck(Deck moveTo)
+	{
+		int deckSize = this.cards.size();	// Initialise a new deck size.
+		// Put the cards in the moveTo deck. 
+		for (int i = 0; i < deckSize; i++)
+		{
+			moveTo.cardAdd(this.cardGet(i));	// Move the card. 
+		}
+		
+		// Empty the deck.
+		for (int i = 0; i < deckSize; i++)
+		{
+			this.cardRemove(0);
+		}
+	}
+	
+	// Calculate the deck size. 
+	public int deckSize()
+	{
+		return this.cards.size();
 	}
 }
