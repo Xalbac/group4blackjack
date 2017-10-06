@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class GameMain
 {
 	// Initialise everything we need.
-	private static int balance;									// User's money.
+	private static int money;									// User's money.
 	private static int bet;										// User's bet.
 	private boolean playerTurnEnd = false;						// Set players end turn to false, so player can play.
 	private static Scanner scanner = new Scanner(System.in);	// Start scanner. 
@@ -14,21 +14,19 @@ public class GameMain
 	
 	// Initialise other classes. 
 	private static Player player = new Player();	// Define the player. 
-	private Player dealer = new Player();	// Define the dealer.
-	//private Deck deck = new Deck();		// Define the deck.
-	//private Card card = new Card();
-	
+	private static Player dealer = new Player();	// Define the dealer.
+
 	// Where the magic happens. 
 	public static void main(String[] args)
 	{
-		balance = 100;				// Set user's balance. 
+		money = 100;				// Set user's balance. 
 
 		
 		// Welcome message. 
 		System.out.println("Welcome to group 4 blackjack!\nYou have 100 credits to start with.\n");
 		
 		// If the player monies are enough AND the game is not over, play.
-		while (balance > 0 && !GameOver)
+		while (money > 0 && !GameOver)
 		{
 			// Ask the player if they are absolutely sure, he/she (we're not transphobic) wants to play this steaming pile of rubber tires. 
 			System.out.println("Do you want to play? [P] Or quit? [Q]\n");
@@ -73,7 +71,27 @@ public class GameMain
 		player.setName(answer);
 		System.out.println(player.getName());
 		System.out.println("Welcome " + player.getName() + ". How much would you liek to bet?");
-		String 
+		bet = scanner.nextInt();
+		if (bet > money)
+		{
+			System.out.println("You cannot bet more than what you have.");
+		}
+		else
+		{
+			money = money - bet;
+			Deck deckPlay = new Deck();
+			Deck cardsPlayer = new Deck();	// Player's hand
+			Deck cardsDealer = new Deck();	// Delaer's hand
+			deckPlay.FillDeckWithCards();
+			deckPlay.shuffleDeck();
+			
+			System.out.println("Dealing cards...");
+			cardsPlayer.cardDraw(deckPlay);
+			cardsPlayer.cardDraw(deckPlay);
+			
+			cardsDealer.cardDraw(deckPlay);
+			cardsDealer.cardDraw(deckPlay);
+		}		
 	}
 	
 	// Player's turn.
@@ -134,11 +152,11 @@ public class GameMain
 		int sumPlayer = 10;	//This will get the card ref
 		int sumDealer = 11;	//This will get the card ref
 		
-		if (sumPlayer>sumDealer && sumPlayer<=21 || sumDealer >21)
+		if (sumPlayer > sumDealer && sumPlayer <= 21 || sumDealer > 21)
 		{
 			System.out.println("You win!");
 			
-			this.balance = this.balance + this.bet + this.bet;
+			this.money = this.money + this.bet + this.bet;
 		}
 		else if (sumPlayer == sumDealer)
 		{
