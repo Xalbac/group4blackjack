@@ -110,7 +110,6 @@ public class GameMain
 		 * }
 		 *
 		 */
-	}
 	
 	private void playerStay()
 	{
