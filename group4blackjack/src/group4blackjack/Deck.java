@@ -112,6 +112,51 @@ public class Deck
 	//Calculate value of the deck
 	public int cardsValue()
 	{
+		int entireValue=0;
+		int aces=0;
+		//value of every card in the deck
+		for (Card oneCard : this.cards) {
+			//All values for cards
+			switch(oneCard.getValue())
+			{
+			case TWO: entireValue+=2; 
+			break;
+			case THREE: entireValue+=3;
+			break;
+			case FOUR: entireValue+=4;
+			break;
+			case FIVE: entireValue+=5;
+			break;
+			case SIX: entireValue+=6;
+			break;
+			case SEVEN: entireValue+=7; 
+			break;
+			case EIGHT: entireValue+=8; 
+			break;
+			case NINE: entireValue+=9; 
+			break;
+			case TEN:entireValue+=10;
+			break;
+			case JACK:entireValue+=10; 
+			break;
+			case QUEEN:entireValue+=10; 
+			break;
+			case KING:entireValue+=10; 
+			break;
+			case ACE: aces+=1; 
+			break;
+			}
+		}
 		
+		for (int i = 0; i < aces; i++) {
+			if(entireValue> 10)
+				entireValue+=1;
+			
+			else
+				entireValue+=11;
+		}
+		return entireValue;
 	}
+	
+	
 }
