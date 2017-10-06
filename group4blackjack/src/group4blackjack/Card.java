@@ -1,5 +1,3 @@
-package group4blackjack;
-
 import group4blackjack.Deck.Ranks;
 import group4blackjack.Deck.Suits;
 
@@ -14,10 +12,8 @@ public class Card {
 		this.suit = suit;
 	}
 	
-
-	@Override
 	public String toString() {
-		return "Card rank=" + rank + ", suit=" + suit;
+		return "Card rank= " + rank + " of, suit= " + suit;
 	}
 
 
