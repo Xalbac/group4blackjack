@@ -1,31 +1,30 @@
 package group4blackjack;
 
-/****
- * 
- * The best version
- * 
- */
-
-
 public class Player {
 	
-	String name;
+	private String name;	// Initialise player name. 
 	
-	public void hit() {
-		
+	// When the player hits.
+	public void hit()
+	{
 		System.out.println(name+ " hits");
-		
 	}
 	
-	public void stay() {
+	// When the player stays.
+	public void stay()
+	{
 		System.out.println(name + " stands");
 	}
 	
-	public String getName() {
+	// Returns the player name. 
+	public String getName()
+	{
 		return name;
 	}
 
-	public void setName(String name) {
+	// Sets the name. 
+	public void setName(String name)
+	{
 		this.name = name;
 	}
 
