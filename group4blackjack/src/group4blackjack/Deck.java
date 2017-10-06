@@ -59,4 +59,24 @@ public class Deck
 		}
 		this.cards=tempoDeck;
 	}
+	
+
+	// Gets 1 card. 
+	public Card cardGet(int i)
+	{
+		return this.cards.get(i);
+	}
+	
+	// Removes a card from the deck.
+	public void cardRemove(int i)
+	{
+		this.cards.remove(i);
+	}
+	
+	
+	public void cardAdd(Deck comingFrom)
+	{
+		this.cards.add(comingFrom.cardGet(0));
+		comingFrom.cardRemove(0);
+	}
 }
