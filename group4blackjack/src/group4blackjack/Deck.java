@@ -93,9 +93,9 @@ public class Deck {
 
 	// Calculate value of the deck
 	public int cardsValue() {
-		int entireValue = 0;
+		int entireValue = 0;	// At
 		int aces = 0;
-		// value of every card in the deck
+		// Value of every card in the deck
 		for (Card oneCard : this.cards) {
 			// All values for cards
 			switch (oneCard.getValue()) {
@@ -141,16 +141,19 @@ public class Deck {
 			}
 		}
 
-		// determine entire value with aces
-		// aces can be worth 1 or 11, if 11 would make the value above 21,
-		// the if statement sets the value of aces to 1
-		for (int i = 0; i < aces; i++) {
+		// Determine entire value with aces.
+		// Aces can be worth 1 or 11, if 11 would make the value above 21.
+		// The if statement sets the value of aces to 1.
+		for (int i = 0; i < aces; i++)
+		{
+			// If the value of cards exceeds 10, make the aces worth 1.
 			if (entireValue > 10)
 				entireValue += 1;
 
 			else
 				entireValue += 11;
 		}
+		// Returns the value of cards. 
 		return entireValue;
 	}
 
