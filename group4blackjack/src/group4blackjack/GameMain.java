@@ -91,11 +91,17 @@ public class GameMain
 			
 			cardsDealer.cardDraw(deckPlay);
 			cardsDealer.cardDraw(deckPlay);
+			
+			System.out.println("Your cards: "+cardsPlayer.toString()+"\n Your deck is valued at: " + cardsPlayer.cardsValue());
+			System.out.println("Dealer hand: " + cardsDealer.cardGet(0).toString() + " and 1 hidden.");
+			
+			playerTurn();
+			
 		}		
 	}
 	
 	// Player's turn.
-	private void playerTurn()
+	private static void playerTurn()
 	{
 		String answer;
 		System.out.println("Hit  [H] or stay [S]?");
@@ -108,7 +114,7 @@ public class GameMain
 		}
 		else
 		{
-			playerStay();
+			player.stay();
 		}
 	}
 	
