@@ -6,12 +6,12 @@ import java.util.Random;
 public class Deck {
 	private ArrayList<Card> cards;
 
-	// Enum table.
+	// Enum table for Suits.
 	public enum Suits {
 		SPADES, HEARTS, DIAMONDS, CLUBS;
 	}
 
-	// Enum table.
+	// Enum table for Ranks.
 	public enum Ranks {
 		ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
 	}
