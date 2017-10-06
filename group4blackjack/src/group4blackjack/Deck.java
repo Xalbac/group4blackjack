@@ -5,7 +5,6 @@ import java.util.Random;
 
 public class Deck {
 	private ArrayList<Card> cards;
-	// private ArrayList<Card> PulledCards;
 
 	// Enum table.
 	public enum Suits {
