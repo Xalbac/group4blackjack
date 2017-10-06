@@ -1,3 +1,5 @@
+package group4blackjack;
+
 import group4blackjack.Deck.Ranks;
 import group4blackjack.Deck.Suits;
 
@@ -6,26 +8,30 @@ public class Card {
 	private Ranks rank;
 	private Suits suit;
 
-	public Card(Ranks rank, Suits suit) {
-		super();
+	public Card(Ranks rank, Suits suit)
+	{
 		this.rank = rank;
 		this.suit = suit;
 	}
 	
-	public String toString() {
+	public String toString()
+	{
 		return "Card rank= " + rank + " of, suit= " + suit;
 	}
 
 
-	public Suits getSuit() {
+	public Suits getSuit()
+	{
 		return suit;
 	}
 
-	public Ranks getRank() {
+	public Ranks getRank()
+	{
 		return rank;
 	}
 
-	public Suits getValue() {
+	public Suits getValue()
+	{
 		return this.suit;
 	}
 	/*
@@ -46,8 +52,4 @@ public class Card {
 	public boolean equals(Object o) {
 		return (o != null && o instanceof Card && ((Card) o).rank == rank && ((Card) o).suit == suit);
 	}*/
-	
-	
-	
-
 }
