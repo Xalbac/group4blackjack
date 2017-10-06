@@ -18,7 +18,7 @@ public class Card
 	// Output as string. 
 	public String toString()
 	{
-		return "Card rank= " + value + " of, suit= " + suit;
+		return value + " of "+ suit;
 	}
 	
 	// Getters and setters. 
