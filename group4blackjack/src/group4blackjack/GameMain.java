@@ -13,7 +13,7 @@ public class GameMain
 	private static boolean GameOver = false;					// Set gameOver to false. 
 	
 	// Initialise other classes. 
-	private Player player = new Player();	// Define the player. 
+	private static Player player = new Player();	// Define the player. 
 	private Player dealer = new Player();	// Define the dealer.
 	//private Deck deck = new Deck();		// Define the deck.
 	//private Card card = new Card();
@@ -69,17 +69,13 @@ public class GameMain
 	private static void gameStart()
 	{
 		//Also initialise new deck.
-		
-		//player's turn first. 
-		
-		//Deck deck = new Deck();
-		
-		//System.out.println(deck);
-		System.out.println(card1);
-		
-		System.out.println("How much you want to bet?\n");
+		//System.out.println("How much you want to bet?\n");
 		//bet = scanner.nextInt();
 		
+		System.out.println("YOur name");
+		String answer = scanner.nextLine();
+		player.setName(answer);
+		System.out.println(player.getName());
 	}
 	
 	// Player's turn.
