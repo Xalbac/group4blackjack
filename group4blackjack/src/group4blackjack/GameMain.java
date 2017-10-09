@@ -104,7 +104,7 @@ public class GameMain
 				}
 				
 				// 
-				if ((cardsDealer.cardsValue() > cardsPlayer.cardsValue()) && playerTurn == false && dealerTurn == true;)
+				if ((cardsDealer.cardsValue() > cardsPlayer.cardsValue()) && playerTurn == false && dealerTurn == true)
 				{
 					System.out.println("Dealer wins!" + cardsDealer.cardsValue() + " against yours: " + cardsPlayer.cardsValue());
 					money -= bet;
