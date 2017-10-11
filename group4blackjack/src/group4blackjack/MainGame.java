@@ -26,16 +26,22 @@ public class MainGame
 		System.out.println("Welcome to the worst blackjack ever!\n");
 		System.out.println("What is your name?");
 		
+		// User input. 
 		player.setName(ui.next());
 		
+		// Give the player the ability to choose the opponent's name. 
 		System.out.println("Name your opponent.");
 		
+		// User input. 
 		opponent.setName(ui.next());
 		
-		System.out.println("Welcome " + player.getName()+ "!\n You start off with " + player.getMoney() + ".");
+		// Display the message and player's name and opponent's name. 
+		System.out.println("Welcome " + player.getName()+ "!\n You start off with " + player.getMoney() + ".\nYou're playing against: " + opponent.getName());
 		
+		// As long as the player has money and the game is not over...
 		while (player.getMoney() > 0 && !GameOver)
 		{
+			// Disable the booleans. 
 			opponentTurn = false;
 			playerTurn = false;
 			
