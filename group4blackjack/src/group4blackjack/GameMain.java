@@ -74,7 +74,7 @@ public class GameMain
 				cardsDealer.cardDraw(deckPlay);
 				
 				// Displayer the cards.
-				System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + " " + cardsPlayer.cardGet(1).toString());
+				System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + " and " + cardsPlayer.cardGet(1).toString());
 				System.out.println("Your cards are valued at: " + cardsPlayer.cardsValue());
 				System.out.println("Dealer cards: " + cardsDealer.cardGet(0).toString() + " and 1 hidden.");
 				
@@ -90,16 +90,18 @@ public class GameMain
 					{
 						cardsPlayer.cardDraw(deckPlay);
 						System.out.println("You draw: " + cardsPlayer.cardGet(cardsPlayer.deckSize()-1).toString());
+						System.out.println("Your total is: " + cardsPlayer.cardsValue());
 						
 						// If the player draws a card and the value exceed 21.
 						if (cardsPlayer.cardsValue() > 21)
 						{
-							System.out.println("Busted!");
+							System.out.println("Busted! Dealer wins!");
 							money -= bet;
 							playerTurn = false;
-							//dealerTurn = true;
+							dealerTurn = false;
 							break;
 						}
+						
 					// If the player stands end the player's turn. 
 					}
 					else if (answer2.compareToIgnoreCase("s") == 0)
@@ -131,7 +133,7 @@ public class GameMain
 				
 				if ((cardsDealer.cardsValue()>21) && playerTurn == false && dealerTurn == true)
 				{
-					System.out.println("Dealer busts! You win!");
+					System.out.println("Dealer bust at " + cardsDealer.cardsValue() + "! You win!");
 					money += bet;
 				}
 				
@@ -143,9 +145,10 @@ public class GameMain
 				
 				if ((cardsPlayer.cardsValue() > cardsDealer.cardsValue()) && playerTurn == false && dealerTurn == true)
 				{
-					System.out.println("You win!");
+					System.out.println("You win!" + "Your total: " + cardsPlayer.cardsValue());
 					money += bet;
 				}
+				
 				
 				cardsPlayer.moveCardsToDeck(deckPlay);
 				cardsDealer.moveCardsToDeck(deckPlay);
