@@ -168,12 +168,20 @@ public class MainGame
 	
 	private static void dealerTurn()
 	{
-		
+		while (dealerTurn = true)
+		{
+			dealer.whoTurn();
+			while (cardsDealer.cardsValue() < 17)
+			{
+				System.out.println("");
+			}
+		}
 	}
 	
 	private static void gameQuit()
 	{
 		System.out.println("Chicken...");
+		GameOver = true;
 		System.exit(1);
 	}
 }

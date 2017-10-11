@@ -59,4 +59,8 @@ public class Player {
 		System.out.println(name + " is the winner!");
 	}
 	
+	public void whoTurn()
+	{
+		System.out.println(name + "'s turn. ");
+	}
 }
