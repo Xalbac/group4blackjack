@@ -1,5 +1,6 @@
 package group4blackjack;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainGame
@@ -76,7 +77,7 @@ public class MainGame
 		{
 			player.playerBet(uiGS.nextInt());
 		}
-		catch (Exception e) 
+		catch (InputMismatchException e)
 		{
 			// TODO: handle exception
 			e.getMessage();
