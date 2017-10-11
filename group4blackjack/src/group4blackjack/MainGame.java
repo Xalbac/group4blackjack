@@ -10,8 +10,6 @@ public class MainGame
 	static Player player = new Player();
 	static Player dealer = new Player();
 	
-	static int money = 100;
-	static int bet = 0;
 	static boolean playerTurn = false;
 	static boolean dealerTurn = false;
 	static boolean GameOver = false;
@@ -26,7 +24,9 @@ public class MainGame
 		
 		System.out.println("Welcome " + player.getName()+ "!\n You start off with " + money + ".");
 		
-		while (money > 0 && !GameOver)
+		player.playerMoney();
+		
+		while (player.playerMoney() > 0 && !GameOver)
 		{
 			System.out.println("Would you like to [P] Play or [Q] Quit?");
 			String answer = ui.next();
@@ -52,7 +52,7 @@ public class MainGame
 				System.out.println("Please use either P or Q.");
 			}
 		}
-		if (money <= 0)
+		if (player.playerMoney() <= 0)
 		{
 			System.out.println("You have no money to play.\n Bye bye!");
 			System.exit(1);
@@ -61,7 +61,7 @@ public class MainGame
 	
 	private static void gameStart()
 	{
-		print
+		
 	}
 	
 	private static void gameQuit()

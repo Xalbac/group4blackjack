@@ -1,8 +1,24 @@
 package group4blackjack;
 
 public class Player {
-	
+	private int money = 100;
+	private int bet = 0;
 	private String name;	// Initialise player name. 
+	
+	public void playerBet(int iBet)
+	{
+		this.bet = iBet;
+	}
+	
+	private void takeMoney()
+	{
+		
+	}
+	
+	public int playerMoney()
+	{
+		return this.money;
+	}
 	
 	// When the player hits.
 	public void hit()
@@ -19,7 +35,7 @@ public class Player {
 	// Returns the player name. 
 	public String getName()
 	{
-		return name;
+		return this.name;
 	}
 
 	// Sets the name. 
