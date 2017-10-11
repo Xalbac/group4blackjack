@@ -175,8 +175,8 @@ public class MainGame
 	
 	private static void dealerTurn()
 	{
-		while (dealerTurn = true)
-		{
+		/*while (dealerTurn = true)
+		{*/
 			dealer.whoTurn();
 			
 			System.out.println(dealer.getName() + " reveals hidden card.");
@@ -191,10 +191,12 @@ public class MainGame
 			if (cardsDealer.cardsValue() > 21)
 			{
 				dealer.whoBusted();
+				dealerTurn = false;
 			}
 			dealer.whoStands();
-			dealerTurn = false;
+			/*dealerTurn = false;
 		}
+		dealerTurn = false;*/
 	}
 	
 	private void DetermineWinner()
