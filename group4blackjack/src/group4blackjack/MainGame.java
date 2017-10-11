@@ -8,8 +8,8 @@ public class MainGame
 {
 	// Initialise the classes.
 	static Deck playDeck = new Deck();
-
-	
+	static Deck cardsPlayer = new Deck();
+	static Deck cardsOpponent = new Deck();	
 	static Player player = new Player();
 	static Player opponent = new Player();
 	
@@ -195,7 +195,7 @@ public class MainGame
 				
 			}
 			
-			// If the player choses stand. 
+			// If the player chooses stand. 
 			else if (answer.equalsIgnoreCase("S"))
 			{
 				playerStand();
