@@ -1,6 +1,7 @@
 package group4blackjack;
 
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameMain
@@ -46,10 +47,10 @@ public class GameMain
 			{
 				bet = ui.nextInt();
 			}
-			catch (Exception e)
+			catch (InputMismatchException e)
 			{
 				// TODO: handle exception
-				System.out.println(e);
+				System.out.println("please enter a valid bet number");
 			}
 			// Check if the bet is more or less than the money they currently have. 
 			if (bet > money)
