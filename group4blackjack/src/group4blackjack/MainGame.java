@@ -179,31 +179,21 @@ public class MainGame
 			// Get the player's answer.
 			try (Scanner uiPT = new Scanner(System.in);){
 				String answer = uiPT.next();
+				// If the player chooses hit.
+				if (answer.equalsIgnoreCase("H"))
+				{
+					playerHit();
+				}
 				
+				// If the player chooses stand. 
+				else if (answer.equalsIgnoreCase("S"))
+				{
+					playerStand();
+					opponentTurn();
+				}
 			} catch (InputMismatchException e) {
 				System.out.println("Input a valid answer: H or S");
 			}
-			
-			
-			// If the player chooses hit.
-			/*if (answer.equalsIgnoreCase("H"))
-			{
-				playerHit();
-			}
-			
-			// If the player chooses stand. 
-			else if (answer.equalsIgnoreCase("S"))
-			{
-				playerStand();
-				opponentTurn();
-			}
-			
-			// If the player can't read again, remind them to back to school, because they are gettting annoying.
-			else
-			{
-				System.out.println("Please use either S or H.");
-			}*/
-			
 			//uiPT.close();
 		}
 	}
