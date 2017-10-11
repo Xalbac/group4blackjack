@@ -68,4 +68,20 @@ public class Player {
 	{
 		System.out.println(name + " draws...\n");
 	}
+	
+	public void whoBusted()
+	{
+		System.out.println(name + " busted!\n");
+	}
+	
+	public void whoStands(String sName)
+	{
+		String sname = sName;
+		System.out.println(name + " stands.\n" + sname + "'s turn.\n");
+	}
+	
+	public void whoStands()
+	{
+		System.out.println(name + " stands.\n");
+	}
 }

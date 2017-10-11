@@ -38,7 +38,7 @@ public class MainGame
 			System.out.println("Would you like to [P] Play or [Q] Quit?");
 			String answer = ui.next();
 			
-			if (answer.compareToIgnoreCase("P") == 0)
+			if (answer.equalsIgnoreCase("P"))
 			{
 				try
 				{
@@ -49,7 +49,7 @@ public class MainGame
 					e.printStackTrace();
 				}
 			}
-			else if (answer.compareToIgnoreCase("Q") == 0)
+			else if (answer.equalsIgnoreCase("Q"))
 			{
 				GameOver = true;
 				gameQuit();
@@ -137,18 +137,18 @@ public class MainGame
 		
 		String answer = uiPT.next();
 		
-		if (answer.compareToIgnoreCase("H") == 0)
+		if (answer.equalsIgnoreCase("H"))
 		{
 			playerHit();
 			if (cardsPlayer.cardsValue() > 21)
 			{
-				System.out.println("Busted!");
+				player.whoBusted();
 				playerTurn = false;
-				GameOver = true;
 			}
 		}
-		else if (answer.compareToIgnoreCase("S") == 0)
+		else if (answer.equalsIgnoreCase("S"))
 		{
+			player.whoStands(dealer.getName());
 			playerStay();
 			dealerTurn = true;
 			dealerTurn();
@@ -188,8 +188,28 @@ public class MainGame
 				cardsDealer.cardDraw(playDeck);
 				System.out.println(cardsDealer.cardGet(cardsDealer.deckSize()-1).toString());
 			}
-			
+			if (cardsDealer.cardsValue() > 21)
+			{
+				dealer.whoBusted();
+			}
+			dealer.whoStands();
 			dealerTurn = false;
+		}
+	}
+	
+	private void DetermineWinner()
+	{
+		if (cardsPlayer.cardsValue() > cardsDealer.cardsValue())
+		{
+			player.Winner();
+		}
+		else if (cardsPlayer.cardsValue() >= cardsDealer.cardsValue())
+		{
+			dealer.Winner();
+		}
+		else if (cardsPlayer.cardsValue() == cardsDealer.cardsValue())
+		{
+			dealer.Winner();
 		}
 	}
 	
