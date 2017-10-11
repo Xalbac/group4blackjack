@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class MainGame
 {
+	static Scanner ui = new Scanner(System.in);
 	// Initialise the classes.
 	static Deck playDeck = new Deck();
 	static Deck cardsPlayer = new Deck();
@@ -22,7 +23,6 @@ public class MainGame
 	public static void main(String[] args)
 	{
 		// Initialise the scanner and display a welcome message. 
-		Scanner ui = new Scanner(System.in);
 		System.out.println("Welcome to the worst blackjack ever!\n");
 		System.out.println("What is your name?");
 		
@@ -90,15 +90,16 @@ public class MainGame
 		System.out.println("How much would you like to bet?");
 		
 		// Try to get the bet and money. 
-		try (Scanner uiGS = new Scanner(System.in);)
+		/*try (Scanner uiGS = new Scanner(System.in);)
 		{
 			player.setBet(uiGS.nextInt());
 		}
 		catch (InputMismatchException e)
 		{
 			e.printStackTrace();
-		}
-		
+		}*/
+		int answer = ui.nextInt();
+		player.setBet(answer);
 		// If the player bet's too much, take their wallet. 
 		if (player.getBet() > player.getMoney())
 		{
@@ -171,13 +172,11 @@ public class MainGame
 		while (playerTurn == true)
 		{
 			// Start a new scanner for user input. 
-			Scanner uiPT = new Scanner(System.in);
 			
 			// Ask the player what they want to do. 
 			System.out.println("Would you like to [H] Hit or [S] Stand?");
 			
-			
-			String answer = uiPT.next();
+			String answer = ui.next();
 			// If the player chooses hit.
 			if (answer.equalsIgnoreCase("H"))
 			{
@@ -212,7 +211,6 @@ public class MainGame
 			} catch (InputMismatchException e) {
 				System.out.println("Input a valid answer: H or S");
 			}*/
-			uiPT.close();
 		}
 	}
 	
