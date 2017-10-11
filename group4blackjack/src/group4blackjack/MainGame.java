@@ -99,7 +99,13 @@ public class MainGame
 		{
 			e.printStackTrace();
 		}*/
-		int answer = ui.nextInt();
+		
+		int answer = 0;
+		
+		answer = ui.nextInt();
+		System.out.println("Please write a valid bet number");
+		
+		
 		player.setBet(answer);
 		// If the player bet's too much, take their wallet. 
 		if (player.getBet() > player.getMoney())
