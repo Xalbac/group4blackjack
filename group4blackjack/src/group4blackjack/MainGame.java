@@ -139,14 +139,7 @@ public class MainGame
 				opponentTurn = false;
 				player.giveMoney();
 			}
-			else if (cardsPlayer.cardsValue() > cardsOpponent.cardsValue())
-			{
-				player.whoWinner();
-				playerTurn = false;
-				opponentTurn = false;
-				player.giveMoney();
-			}
-			else if (cardsPlayer.cardsValue() >= cardsOpponent.cardsValue())
+			else if (cardsOpponent.cardsValue() == 21)
 			{
 				opponent.whoWinner();
 				playerTurn = false;
@@ -156,9 +149,6 @@ public class MainGame
 			{
 				// Start the player's turn. 
 				playerTurn = true;
-				
-				// Check to see if the player won at start. 
-				checkIfWinAtStart();
 				playerTurn();
 			}
 		}
