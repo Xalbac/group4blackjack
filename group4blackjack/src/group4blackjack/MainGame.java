@@ -82,7 +82,25 @@ public class MainGame
 		else
 		{
 			player.takeMoney();
+			
+			playDeck.FillDeckWithCards();
+			playDeck.shuffleDeck();
+			
+			cardsPlayer.cardDraw(playDeck);
+			cardsPlayer.cardDraw(playDeck);
+			
+			cardsDealer.cardDraw(playDeck);
+			cardsDealer.cardDraw(playDeck);
+			
+			playerTurn();
 		}
+	}
+	
+	
+	
+	private static void playerTurn()
+	{
+		
 	}
 	
 	private static void gameQuit()
