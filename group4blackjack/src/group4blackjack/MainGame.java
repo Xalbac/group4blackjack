@@ -178,22 +178,27 @@ public class MainGame
 			// Start a new scanner for user input. 
 			Scanner uiPT = new Scanner(System.in);
 			
+			// Ask the player what they want to do. 
 			System.out.println("Would you like to [H] Hit or [S] Stand?");
 			
+			// Get the player's answer. 
 			String answer = uiPT.next();
 			
+			// If the player chooses hit.
 			if (answer.equalsIgnoreCase("H"))
 			{
 				playerHit();
 				
 			}
+			
+			// If the player choses stand. 
 			else if (answer.equalsIgnoreCase("S"))
 			{
 				playerStand();
-				playerTurn = false;
-				opponentTurn = true;
 				opponentTurn();
 			}
+			
+			// If the player can't read again, remind them to back to school, because they are gettting annoying.
 			else
 			{
 				System.out.println("Please use either S or H.");
@@ -206,9 +211,11 @@ public class MainGame
 	// Player chooses hit. 
 	private static void playerHit()
 	{
+		// Draw a card. Display who is drawing. Display the card and value. 
 		cardsPlayer.cardDraw(playDeck);
 		player.whoDraws();
 		System.out.println("You draw: " + cardsPlayer.cardGet(cardsPlayer.deckSize()-1).toString());
+		System.out.println("Your deck is valued at: " + cardsPlayer.cardsValue());
 		
 		// If the value of the cards exceeds 21. 
 		if (cardsPlayer.cardsValue() > 21)
@@ -223,6 +230,7 @@ public class MainGame
 	// Player chooses stay. 
 	private static void playerStand()
 	{
+		// Display that you are standing, opponent's turn is now.
 		System.out.println(player.getName() + " stands." + opponent.getName() +"'s turn.");
 		playerTurn = false;
 		opponentTurn = true;
@@ -231,6 +239,7 @@ public class MainGame
 	// Opponent's turn.
 	private static void opponentTurn()
 	{
+		// While it's the opponent's turn...
 		while (opponentTurn == true)
 		{
 			opponent.whoTurn();
