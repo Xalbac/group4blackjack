@@ -139,12 +139,16 @@ public class MainGame
 				playerTurn = false;
 				opponentTurn = false;
 				player.giveMoney();
+				cardsPlayer.moveCardsToDeck(playDeck);
+				cardsOpponent.moveCardsToDeck(playDeck);
 			}
 			else if (cardsOpponent.cardsValue() == 21)
 			{
 				opponent.whoWinner();
 				playerTurn = false;
 				opponentTurn = false;
+				cardsPlayer.moveCardsToDeck(playDeck);
+				cardsOpponent.moveCardsToDeck(playDeck);
 			}
 			else 
 			{
@@ -230,6 +234,8 @@ public class MainGame
 			playerTurn = false;
 			opponent.whoWinner();
 			opponentTurn = false;
+			cardsPlayer.moveCardsToDeck(playDeck);
+			cardsOpponent.moveCardsToDeck(playDeck);
 		}
 	}
 	
@@ -271,6 +277,8 @@ public class MainGame
 				player.whoWinner();
 				playerTurn = false;
 				player.giveMoney();
+				cardsPlayer.moveCardsToDeck(playDeck);
+				cardsOpponent.moveCardsToDeck(playDeck);
 			}
 			
 			// If the player has higher value of cards. 
@@ -280,6 +288,8 @@ public class MainGame
 				opponentTurn = false;
 				playerTurn = false;
 				player.giveMoney();
+				cardsPlayer.moveCardsToDeck(playDeck);
+				cardsOpponent.moveCardsToDeck(playDeck);
 			}
 			
 			// If it's a draw or the opponent has more value of cards. 
@@ -288,6 +298,8 @@ public class MainGame
 				opponent.whoWinner();
 				opponentTurn = false;
 				playerTurn = false;
+				cardsPlayer.moveCardsToDeck(playDeck);
+				cardsOpponent.moveCardsToDeck(playDeck);
 			}
 		}
 	}
