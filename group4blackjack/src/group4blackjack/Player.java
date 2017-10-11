@@ -28,7 +28,7 @@ public class Player {
 	// Give the player money.
 	public void giveMoney()
 	{
-		this.money += this.bet;
+		this.money = this.bet + this.bet;
 	}
 	
 	// Shows player money. 
