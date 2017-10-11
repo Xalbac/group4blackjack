@@ -127,15 +127,15 @@ public class MainGame
 			cardsOpponent.cardDraw(playDeck);
 			cardsOpponent.cardDraw(playDeck);
 			
-			// Check to see if the player won at start. 
-			checkIfWinAtStart();
-			
 			// Display player cards and the opponent's cards and display your value of cards. 
 			System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + " and " + cardsPlayer.cardGet(1).toString() + "\nYour deck is valued at: " + cardsPlayer.cardsValue());
 			System.out.println("Dealer hand: " + cardsOpponent.cardGet(0).toString() + " and 1 hidden.");
 			
 			// Start the player's turn. 
 			playerTurn = true;
+			
+			// Check to see if the player won at start. 
+			checkIfWinAtStart();
 			playerTurn();
 		}
 		//uiGS.close();
