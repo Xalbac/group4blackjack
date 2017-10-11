@@ -21,7 +21,10 @@ public class MainGame
 		System.out.println("What is your name?");
 		
 		player.setName(ui.next());
-		dealer.setName("Dealer");
+		
+		System.out.println("Name your opponent.");
+		
+		dealer.setName(ui.next());
 		
 		System.out.println("Welcome " + player.getName()+ "!\n You start off with " + player.playerMoney() + ".");
 		
@@ -126,6 +129,8 @@ public class MainGame
 	
 	private static void playerTurn()
 	{
+		player.whoTurn();
+		
 		Scanner uiPT = new Scanner(System.in);
 		
 		System.out.println("Would you like to [H] Hit or [S] Stand?");
