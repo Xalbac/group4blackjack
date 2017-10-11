@@ -15,12 +15,12 @@ public class Player {
 		return this.bet;
 	}
 	
-	private void takeMoney()
+	public void takeMoney()
 	{
 		this.money -= this.bet;
 	}
 	
-	private void giveMoney()
+	public void giveMoney()
 	{
 		this.money += this.bet;
 	}

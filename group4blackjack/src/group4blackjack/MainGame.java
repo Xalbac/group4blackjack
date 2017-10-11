@@ -76,6 +76,13 @@ public class MainGame
 		}
 		
 		if (player.showBet() > player.playerMoney())
+		{
+			System.out.println("You cannot bet more than what you have!");
+		}
+		else
+		{
+			player.takeMoney();
+		}
 	}
 	
 	private static void gameQuit()
