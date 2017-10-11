@@ -131,12 +131,36 @@ public class MainGame
 			System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + " and " + cardsPlayer.cardGet(1).toString() + "\nYour deck is valued at: " + cardsPlayer.cardsValue());
 			System.out.println("Dealer hand: " + cardsOpponent.cardGet(0).toString() + " and 1 hidden.");
 			
-			// Start the player's turn. 
-			playerTurn = true;
-			
-			// Check to see if the player won at start. 
-			checkIfWinAtStart();
-			playerTurn();
+			// Check if the player wins at strart. 
+			if (cardsPlayer.cardsValue() == 21)
+			{
+				player.whoWinner();
+				playerTurn = false;
+				opponentTurn = false;
+				player.giveMoney();
+			}
+			else if (cardsPlayer.cardsValue() > cardsOpponent.cardsValue())
+			{
+				player.whoWinner();
+				playerTurn = false;
+				opponentTurn = false;
+				player.giveMoney();
+			}
+			else if (cardsPlayer.cardsValue() >= cardsOpponent.cardsValue())
+			{
+				opponent.whoWinner();
+				playerTurn = false;
+				opponentTurn = false;
+			}
+			else 
+			{
+				// Start the player's turn. 
+				playerTurn = true;
+				
+				// Check to see if the player won at start. 
+				checkIfWinAtStart();
+				playerTurn();
+			}
 		}
 		//uiGS.close();
 	}
@@ -144,26 +168,7 @@ public class MainGame
 	// Checks if you win at start. 
 	private static void checkIfWinAtStart()
 	{
-		if (cardsPlayer.cardsValue() == 21)
-		{
-			player.whoWinner();
-			playerTurn = false;
-			opponentTurn = false;
-			player.giveMoney();
-		}
-		else if (cardsPlayer.cardsValue() > cardsOpponent.cardsValue())
-		{
-			player.whoWinner();
-			playerTurn = false;
-			opponentTurn = false;
-			player.giveMoney();
-		}
-		else if (cardsPlayer.cardsValue() >= cardsOpponent.cardsValue())
-		{
-			opponent.whoWinner();
-			playerTurn = false;
-			opponentTurn = false;
-		}
+		
 	}
 	
 	// Player's turn. 
