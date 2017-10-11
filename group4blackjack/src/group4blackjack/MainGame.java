@@ -79,8 +79,7 @@ public class MainGame
 		}
 		catch (InputMismatchException e)
 		{
-			// TODO: handle exception
-			e.getMessage();
+			System.out.println("Enter a valid number to what you want to bet");
 		}
 		
 		if (player.showBet() > player.playerMoney())
