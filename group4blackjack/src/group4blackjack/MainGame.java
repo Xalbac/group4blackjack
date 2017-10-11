@@ -22,7 +22,7 @@ public class MainGame
 		
 		player.setName(ui.next());
 		
-		System.out.println("Welcome " + player.getName()+ "!\n You start off with " + money + ".");
+		System.out.println("Welcome " + player.getName()+ "!\n You start off with " + player.playerMoney() + ".");
 		
 		player.playerMoney();
 		
@@ -56,12 +56,26 @@ public class MainGame
 		{
 			System.out.println("You have no money to play.\n Bye bye!");
 			System.exit(1);
+			ui.close();
 		}
+		ui.close();
 	}
 	
 	private static void gameStart()
 	{
+		Scanner uiGS = new Scanner(System.in);
+		System.out.println("How much would you like to bet?");
+		try 
+		{
+			player.playerBet(uiGS.nextInt());
+		}
+		catch (Exception e) 
+		{
+			// TODO: handle exception
+			e.getMessage();
+		}
 		
+		if (player.showBet() > player.playerMoney())
 	}
 	
 	private static void gameQuit()
