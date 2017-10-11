@@ -242,17 +242,22 @@ public class MainGame
 		// While it's the opponent's turn...
 		while (opponentTurn == true)
 		{
+			// Display whose turn it is. 
 			opponent.whoTurn();
 	
+			// Show the hidden card and the deck value of the opponent. 
 			System.out.println(opponent.getName() + " reveals hidden card." + cardsOpponent.cardGet(1).toString());
 			System.out.println("His deck is valued at: " + cardsOpponent.cardsValue());
 				
+			// As long as the opponent's cards are not exceeding 17...
 			while (cardsOpponent.cardsValue() < 17)
 			{
 				opponent.whoDraws();
 				cardsOpponent.cardDraw(playDeck);
 				System.out.println(cardsOpponent.cardGet(cardsOpponent.deckSize()-1).toString());
 			}
+			
+			// If the cards exceed value of 21. 
 			if (cardsOpponent.cardsValue() > 21)
 			{
 				opponent.whoBusted();
@@ -261,6 +266,8 @@ public class MainGame
 				playerTurn = false;
 				player.giveMoney();
 			}
+			
+			// If the player has higher value of cards. 
 			if (cardsPlayer.cardsValue() > cardsOpponent.cardsValue())
 			{
 				player.whoWinner();
@@ -268,18 +275,8 @@ public class MainGame
 				playerTurn = false;
 				player.giveMoney();
 			}
-			else if (cardsPlayer.cardsValue() >= cardsOpponent.cardsValue())
-			{
-				opponent.whoWinner();
-				opponentTurn = false;
-				playerTurn = false;
-			}
-			else if (cardsPlayer.cardsValue() == cardsOpponent.cardsValue())
-			{
-				opponent.whoWinner();
-				opponentTurn = false;
-				playerTurn = false;
-			}
+			
+			// If it's a draw or the opponent has more value of cards. 
 			else if (cardsPlayer.cardsValue() <= cardsOpponent.cardsValue())
 			{
 				opponent.whoWinner();
