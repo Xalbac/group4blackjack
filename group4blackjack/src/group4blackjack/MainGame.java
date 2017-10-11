@@ -111,22 +111,30 @@ public class MainGame
 			// But take their money instead!
 			player.takeMoney();
 			
+			// Create a deck of cards to play with. 
 			playDeck.FillDeckWithCards();
-			playDeck.shuffleDeck();
+			playDeck.shuffleDeck();	// Shuffle the cards. 
 			
+			// Display the message. 
 			System.out.println("Dealing cards...");
 			
+			// Now draw 2 cards for the player and the opponent from the deck. 
+			// Draw 2 cards for the player. 
 			cardsPlayer.cardDraw(playDeck);
 			cardsPlayer.cardDraw(playDeck);
 			
+			// Draw 2 cards for the opponent. 
 			cardsOpponent.cardDraw(playDeck);
 			cardsOpponent.cardDraw(playDeck);
 			
+			// Check to see if the player won at start. 
 			checkIfWinAtStart();
 			
+			// Display player cards and the opponent's cards and display your value of cards. 
 			System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + cardsPlayer.cardGet(1).toString() + "\nYour deck is valued at: " + cardsPlayer.cardsValue());
 			System.out.println("Dealer hand: " + cardsOpponent.cardGet(0).toString() + " and 1 hidden.");
 			
+			// Start the player's turn. 
 			playerTurn = true;
 			playerTurn();
 		}
@@ -161,10 +169,13 @@ public class MainGame
 	// Player's turn. 
 	private static void playerTurn()
 	{
+		// Display player's turn. 
 		player.whoTurn();
 		
+		// While it's player's turn...
 		while (playerTurn == true)
 		{
+			// Start a new scanner for user input. 
 			Scanner uiPT = new Scanner(System.in);
 			
 			System.out.println("Would you like to [H] Hit or [S] Stand?");
@@ -178,8 +189,7 @@ public class MainGame
 			}
 			else if (answer.equalsIgnoreCase("S"))
 			{
-				player.whoStands(opponent.getName());
-				playerStay();
+				playerStand();
 				playerTurn = false;
 				opponentTurn = true;
 				opponentTurn();
@@ -199,6 +209,8 @@ public class MainGame
 		cardsPlayer.cardDraw(playDeck);
 		player.whoDraws();
 		System.out.println("You draw: " + cardsPlayer.cardGet(cardsPlayer.deckSize()-1).toString());
+		
+		// If the value of the cards exceeds 21. 
 		if (cardsPlayer.cardsValue() > 21)
 		{
 			player.whoBusted();
@@ -209,7 +221,7 @@ public class MainGame
 	}
 	
 	// Player chooses stay. 
-	private static void playerStay()
+	private static void playerStand()
 	{
 		System.out.println(player.getName() + " stands." + opponent.getName() +"'s turn.");
 		playerTurn = false;
