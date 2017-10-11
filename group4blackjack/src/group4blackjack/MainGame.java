@@ -1,20 +1,24 @@
 package group4blackjack;
 
+// Imports. 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainGame
 {
+	// Initialise the classes.
 	static Deck playDeck = new Deck();
 	static Deck cardsPlayer = new Deck();
-	static Deck cardsDealer = new Deck();
+	static Deck cardsOpponent = new Deck();
 	static Player player = new Player();
-	static Player dealer = new Player();
+	static Player opponent = new Player();
 	
+	// Initialise standard booleans. 
 	static boolean playerTurn = false;
-	static boolean dealerTurn = false;
+	static boolean opponentTurn = false;
 	static boolean GameOver = false;
 	
+	// High impact violence. 
 	public static void main(String[] args)
 	{
 		Scanner ui = new Scanner(System.in);
@@ -25,15 +29,13 @@ public class MainGame
 		
 		System.out.println("Name your opponent.");
 		
-		dealer.setName(ui.next());
+		opponent.setName(ui.next());
 		
-		System.out.println("Welcome " + player.getName()+ "!\n You start off with " + player.playerMoney() + ".");
+		System.out.println("Welcome " + player.getName()+ "!\n You start off with " + player.getMoney() + ".");
 		
-		player.playerMoney();
-		
-		while (player.playerMoney() > 0 && !GameOver)
+		while (player.getMoney() > 0 && !GameOver)
 		{
-			dealerTurn = false;
+			opponentTurn = false;
 			playerTurn = false;
 			
 			System.out.println("Would you like to [P] Play or [Q] Quit?");
@@ -60,7 +62,7 @@ public class MainGame
 				System.out.println("Please use either P or Q.");
 			}
 		}
-		if (player.playerMoney() <= 0)
+		if (player.getMoney() <= 0)
 		{
 			System.out.println("You have no money to play.\n Bye bye!");
 			System.exit(1);
@@ -69,21 +71,21 @@ public class MainGame
 		ui.close();
 	}
 	
+	// Where the game starts after initial "impact". 
 	private static void gameStart()
 	{
 		Scanner uiGS = new Scanner(System.in);
 		System.out.println("How much would you like to bet?");
 		try 
 		{
-			player.playerBet(uiGS.nextInt());
+			player.setBet(uiGS.nextInt());
 		}
 		catch (InputMismatchException e)
 		{
-			// TODO: handle exception
 			e.getMessage();
 		}
 		
-		if (player.showBet() > player.playerMoney())
+		if (player.getBet() > player.getMoney())
 		{
 			System.out.println("You cannot bet more than what you have!");
 		}
@@ -99,13 +101,13 @@ public class MainGame
 			cardsPlayer.cardDraw(playDeck);
 			cardsPlayer.cardDraw(playDeck);
 			
-			cardsDealer.cardDraw(playDeck);
-			cardsDealer.cardDraw(playDeck);
+			cardsOpponent.cardDraw(playDeck);
+			cardsOpponent.cardDraw(playDeck);
 			
 			checkIfWinAtStart();
 			
 			System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + cardsPlayer.cardGet(1).toString() + "\nYour deck is valued at: " + cardsPlayer.cardsValue());
-			System.out.println("Dealer hand: " + cardsDealer.cardGet(0).toString() + " and 1 hidden.");
+			System.out.println("Dealer hand: " + cardsOpponent.cardGet(0).toString() + " and 1 hidden.");
 			
 			playerTurn = true;
 			playerTurn();
@@ -113,22 +115,32 @@ public class MainGame
 		uiGS.close();
 	}
 	
+	// Checks if you win at start. 
 	private static void checkIfWinAtStart()
 	{
 		if (cardsPlayer.cardsValue() == 21)
 		{
-			player.Winner();
+			player.whoWinner();
+			playerTurn = false;
+			opponentTurn = false;
+			player.giveMoney();
 		}
-		else if (cardsPlayer.cardsValue() > cardsDealer.cardsValue())
+		else if (cardsPlayer.cardsValue() > cardsOpponent.cardsValue())
 		{
-			player.Winner();
+			player.whoWinner();
+			playerTurn = false;
+			opponentTurn = false;
+			player.giveMoney();
 		}
-		else if (cardsPlayer.cardsValue() >= cardsDealer.cardsValue())
+		else if (cardsPlayer.cardsValue() >= cardsOpponent.cardsValue())
 		{
-			dealer.Winner();
+			opponent.whoWinner();
+			playerTurn = false;
+			opponentTurn = false;
 		}
 	}
 	
+	// Player's turn. 
 	private static void playerTurn()
 	{
 		player.whoTurn();
@@ -148,11 +160,11 @@ public class MainGame
 			}
 			else if (answer.equalsIgnoreCase("S"))
 			{
-				player.whoStands(dealer.getName());
+				player.whoStands(opponent.getName());
 				playerStay();
 				playerTurn = false;
-				dealerTurn = true;
-				dealerTurn();
+				opponentTurn = true;
+				opponentTurn();
 			}
 			else
 			{
@@ -163,6 +175,7 @@ public class MainGame
 		}
 	}
 	
+	// Player chooses hit. 
 	private static void playerHit()
 	{
 		cardsPlayer.cardDraw(playDeck);
@@ -172,56 +185,72 @@ public class MainGame
 		{
 			player.whoBusted();
 			playerTurn = false;
+			opponent.whoWinner();
+			opponentTurn = false;
 		}
 	}
 	
+	// Player chooses stay. 
 	private static void playerStay()
 	{
-		System.out.println(player.getName() + " stands." + dealer.getName() +"'s turn.");
+		System.out.println(player.getName() + " stands." + opponent.getName() +"'s turn.");
 		playerTurn = false;
+		opponentTurn = true;
 	}
 	
-	private static void dealerTurn()
+	// Opponent's turn.
+	private static void opponentTurn()
 	{
-		while (dealerTurn == true)
+		while (opponentTurn == true)
 		{
-		dealer.whoTurn();
-
-		System.out.println(dealer.getName() + " reveals hidden card." + cardsDealer.cardGet(1).toString());
-		System.out.println("His deck is valued at: " + cardsDealer.cardsValue());
-			
-		while (cardsDealer.cardsValue() < 17)
-		{
-			dealer.whoDraws();
-			cardsDealer.cardDraw(playDeck);
-			System.out.println(cardsDealer.cardGet(cardsDealer.deckSize()-1).toString());
-		}
-		if (cardsDealer.cardsValue() > 21)
-		{
-			dealer.whoBusted();
-			dealerTurn = false;
-		}
-		dealer.whoStands();
+			opponent.whoTurn();
+	
+			System.out.println(opponent.getName() + " reveals hidden card." + cardsOpponent.cardGet(1).toString());
+			System.out.println("His deck is valued at: " + cardsOpponent.cardsValue());
+				
+			while (cardsOpponent.cardsValue() < 17)
+			{
+				opponent.whoDraws();
+				cardsOpponent.cardDraw(playDeck);
+				System.out.println(cardsOpponent.cardGet(cardsOpponent.deckSize()-1).toString());
+			}
+			if (cardsOpponent.cardsValue() > 21)
+			{
+				opponent.whoBusted();
+				opponentTurn = false;
+				player.whoWinner();
+				playerTurn = false;
+				player.giveMoney();
+			}
+			if (cardsPlayer.cardsValue() > cardsOpponent.cardsValue())
+			{
+				player.whoWinner();
+				opponentTurn = false;
+				playerTurn = false;
+				player.giveMoney();
+			}
+			else if (cardsPlayer.cardsValue() >= cardsOpponent.cardsValue())
+			{
+				opponent.whoWinner();
+				opponentTurn = false;
+				playerTurn = false;
+			}
+			else if (cardsPlayer.cardsValue() == cardsOpponent.cardsValue())
+			{
+				opponent.whoWinner();
+				opponentTurn = false;
+				playerTurn = false;
+			}
+			else if (cardsPlayer.cardsValue() <= cardsOpponent.cardsValue())
+			{
+				opponent.whoWinner();
+				opponentTurn = false;
+				playerTurn = false;
+			}
 		}
 	}
 	
-	private static void DetermineWinner()
-	{
-		if (cardsPlayer.cardsValue() > cardsDealer.cardsValue())
-		{
-			player.Winner();
-		}
-		else if (cardsPlayer.cardsValue() >= cardsDealer.cardsValue())
-		{
-			dealer.Winner();
-		}
-		else if (cardsPlayer.cardsValue() == cardsDealer.cardsValue())
-		{
-			dealer.Winner();
-		}
-		else if (cardsPlayer.cardsValue() < cardsDealer.cardsValue());
-	}
-	
+	// Display the message and quit the game when the player chooses Quit.
 	private static void gameQuit()
 	{
 		System.out.println("Chicken...");
