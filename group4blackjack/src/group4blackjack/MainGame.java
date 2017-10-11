@@ -192,7 +192,6 @@ public class MainGame
 			if (answer.equalsIgnoreCase("H"))
 			{
 				playerHit();
-				
 			}
 			
 			// If the player chooses stand. 
