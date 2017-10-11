@@ -42,9 +42,12 @@ public class GameMain
 			// Ask the player about the bet. 
 			System.out.println("How much would you like to bet?");
 			
-			try {
+			try
+			{
 				bet = ui.nextInt();
-			} catch (Exception e) {
+			}
+			catch (Exception e)
+			{
 				// TODO: handle exception
 				System.out.println(e);
 			}
