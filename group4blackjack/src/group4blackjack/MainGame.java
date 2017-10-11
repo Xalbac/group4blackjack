@@ -88,6 +88,7 @@ public class MainGame
 		
 		// Ask the player how much they want to bet. 
 		System.out.println("How much would you like to bet?");
+		System.out.println("You have: " + player.getMoney());
 		
 		// Try to get the bet and money. 
 		/*try (Scanner uiGS = new Scanner(System.in);)
@@ -200,7 +201,7 @@ public class MainGame
 		cardsPlayer.cardDraw(playDeck);
 		player.whoDraws();
 		System.out.println("You draw: " + cardsPlayer.cardGet(cardsPlayer.deckSize()-1).toString());
-		System.out.println("Your deck is valued at: " + cardsPlayer.cardsValue());
+		System.out.println("Your total : " + cardsPlayer.cardsValue());
 		
 		// If the value of the cards exceeds 21. 
 		if (cardsPlayer.cardsValue() > 21)
@@ -218,7 +219,7 @@ public class MainGame
 	private static void playerStand()
 	{
 		// Display that you are standing, opponent's turn is now.
-		System.out.println(player.getName() + " stands." + opponent.getName() +"'s turn.");
+		System.out.println(player.getName() + " stands.");
 		playerTurn = false;
 		opponentTurn = true;
 	}
@@ -233,7 +234,7 @@ public class MainGame
 			opponent.whoTurn();
 	
 			// Show the hidden card and the deck value of the opponent. 
-			System.out.println(opponent.getName() + " reveals hidden card." + cardsOpponent.cardGet(1).toString());
+			System.out.println(opponent.getName() + " reveals hidden card: " + cardsOpponent.cardGet(1).toString());
 			System.out.println("His deck is valued at: " + cardsOpponent.cardsValue());
 				
 			// As long as the opponent's cards are not exceeding 17...
