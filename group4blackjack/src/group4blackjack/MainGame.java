@@ -258,7 +258,7 @@ public class MainGame
 			}
 			
 			// If the player has higher value of cards. 
-			if (cardsPlayer.cardsValue() > cardsOpponent.cardsValue())
+			else if (cardsPlayer.cardsValue() > cardsOpponent.cardsValue())
 			{
 				player.whoWinner();
 				opponentTurn = false;
