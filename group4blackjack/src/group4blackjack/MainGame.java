@@ -117,14 +117,15 @@ public class MainGame
 	{
 		if (cardsPlayer.cardsValue() == 21)
 		{
-			if (cardsPlayer.cardsValue() > cardsDealer.cardsValue())
-			{
-				player.Winner();
-			}
-			else if (cardsPlayer.cardsValue() >= cardsDealer.cardsValue())
-			{
-				dealer.Winner();
-			}
+			player.Winner();
+		}
+		else if (cardsPlayer.cardsValue() > cardsDealer.cardsValue())
+		{
+			player.Winner();
+		}
+		else if (cardsPlayer.cardsValue() >= cardsDealer.cardsValue())
+		{
+			dealer.Winner();
 		}
 	}
 	
@@ -134,36 +135,31 @@ public class MainGame
 		
 		while (playerTurn == true)
 		{
-		Scanner uiPT = new Scanner(System.in);
-		
-		System.out.println("Would you like to [H] Hit or [S] Stand?");
-		
-		String answer = uiPT.next();
-		
-		if (answer.equalsIgnoreCase("H"))
-		{
-			playerHit();
-			if (cardsPlayer.cardsValue() > 21)
+			Scanner uiPT = new Scanner(System.in);
+			
+			System.out.println("Would you like to [H] Hit or [S] Stand?");
+			
+			String answer = uiPT.next();
+			
+			if (answer.equalsIgnoreCase("H"))
 			{
-				player.whoBusted();
-				playerTurn = false;
-				DetermineWinner();
+				playerHit();
+				
 			}
-		}
-		else if (answer.equalsIgnoreCase("S"))
-		{
-			player.whoStands(dealer.getName());
-			playerStay();
-			playerTurn = false;
-			dealerTurn = true;
-			dealerTurn();
-		}
-		else
-		{
-			System.out.println("Please use either S or H.");
-		}
-		
-		uiPT.close();
+			else if (answer.equalsIgnoreCase("S"))
+			{
+				player.whoStands(dealer.getName());
+				playerStay();
+				playerTurn = false;
+				dealerTurn = true;
+				dealerTurn();
+			}
+			else
+			{
+				System.out.println("Please use either S or H.");
+			}
+			
+			uiPT.close();
 		}
 	}
 	
@@ -172,6 +168,11 @@ public class MainGame
 		cardsPlayer.cardDraw(playDeck);
 		player.whoDraws();
 		System.out.println("You draw: " + cardsPlayer.cardGet(cardsPlayer.deckSize()-1).toString());
+		if (cardsPlayer.cardsValue() > 21)
+		{
+			player.whoBusted();
+			playerTurn = false;
+		}
 	}
 	
 	private static void playerStay()
