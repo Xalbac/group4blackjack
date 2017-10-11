@@ -41,12 +41,18 @@ public class GameMain
 		{
 			// Ask the player about the bet. 
 			System.out.println("How much would you like to bet?");
-			bet = ui.nextInt();
 			
+			try {
+				bet = ui.nextInt();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e);
+			}
 			// Check if the bet is more or less than the money they currently have. 
 			if (bet > money)
 			{
 				System.out.println("You can't bet more than you have.");
+				break;
 			}
 			// If the bet is ok, proceed with the game. 
 			else
@@ -86,6 +92,7 @@ public class GameMain
 							System.out.println("Busted!");
 							money -= bet;
 							playerTurn = false;
+							dealerTurn = true;
 							break;
 						}
 					// If the player stands end the player's turn. 
@@ -94,9 +101,10 @@ public class GameMain
 					{
 						System.out.println("Player stands.");
 						playerTurn = false;
+						dealerTurn = true;
 						break;
 					}
-					// Else tell htem to use H or S. 
+					// Else tell them to use H or S. 
 					else
 					{
 						System.out.println("Please use either [H] or [S]");
@@ -110,15 +118,41 @@ public class GameMain
 					money -= bet;
 				}
 				
-				while ((cardsDealer.cardsValue() > 17) && playerTurn == false & dealerTurn == true)
+				while ((cardsDealer.cardsValue() < 17) && playerTurn == false && dealerTurn == true)
 				{
 					cardsDealer.cardDraw(deckPlay);
 					System.out.println("Dealer draws: " + cardsDealer.cardGet(cardsDealer.deckSize()-1).toString());
 				}
+				
+				if ((cardsDealer.cardsValue()>21) && playerTurn == false && dealerTurn == true)
+				{
+					System.out.println("Dealer busts! You win!");
+					money += bet;
+				}
+				
+				if ((cardsDealer.cardsValue() == cardsPlayer.cardsValue() && playerTurn == false && dealerTurn == true))
+				{
+					System.out.println("Draw! Dealer wins!");
+					money -= bet;
+				}
+				
+				if ((cardsPlayer.cardsValue() > cardsDealer.cardsValue()) && playerTurn == false && dealerTurn == true)
+				{
+					System.out.println("You win!");
+					money += bet;
+				}
+				
+				cardsPlayer.moveCardsToDeck(deckPlay);
+				cardsDealer.moveCardsToDeck(deckPlay);
+				System.out.println("End of hand");
 			}
+			
 		}
+		System.out.println("Game over!");
+		
+		ui.close();
 	}
-	
+}
 	/*
 	// Initialise everything we need.
 	private static int money;									// User's money.
@@ -303,5 +337,5 @@ public class GameMain
 		System.out.println("Game over!");
 		System.exit(1);
 		GameOver = true;
-	}*/
-}
+	}
+}*/
