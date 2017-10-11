@@ -21,6 +21,7 @@ public class MainGame
 		System.out.println("What is your name?");
 		
 		player.setName(ui.next());
+		dealer.setName("Dealer");
 		
 		System.out.println("Welcome " + player.getName()+ "!\n You start off with " + player.playerMoney() + ".");
 		
@@ -28,6 +29,9 @@ public class MainGame
 		
 		while (player.playerMoney() > 0 && !GameOver)
 		{
+			dealerTurn = false;
+			playerTurn = false;
+			
 			System.out.println("Would you like to [P] Play or [Q] Quit?");
 			String answer = ui.next();
 			
@@ -86,19 +90,83 @@ public class MainGame
 			playDeck.FillDeckWithCards();
 			playDeck.shuffleDeck();
 			
+			System.out.println("Dealing cards...");
+			
 			cardsPlayer.cardDraw(playDeck);
 			cardsPlayer.cardDraw(playDeck);
 			
 			cardsDealer.cardDraw(playDeck);
 			cardsDealer.cardDraw(playDeck);
 			
+			checkIfWinAtStart();
+			
+			System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + cardsPlayer.cardGet(1).toString() + "\nYour deck is valued at: " + cardsPlayer.cardsValue());
+			System.out.println("Dealer hand: " + cardsDealer.cardGet(0).toString() + " and 1 hidden.");
+			
+			playerTurn = true;
 			playerTurn();
+		}
+		uiGS.close();
+	}
+	
+	private static void checkIfWinAtStart()
+	{
+		if (cardsPlayer.cardsValue() == 21)
+		{
+			if (cardsPlayer.cardsValue() > cardsDealer.cardsValue())
+			{
+				player.Winner();
+			}
+			else if (cardsPlayer.cardsValue() >= cardsDealer.cardsValue())
+			{
+				dealer.Winner();
+			}
 		}
 	}
 	
-	
-	
 	private static void playerTurn()
+	{
+		Scanner uiPT = new Scanner(System.in);
+		
+		System.out.println("Would you like to [H] Hit or [S] Stand?");
+		
+		String answer = uiPT.next();
+		
+		if (answer.compareToIgnoreCase("H") == 0)
+		{
+			playerHit();
+			if (cardsPlayer.cardsValue() > 21)
+			{
+				System.out.println("Busted!");
+				playerTurn = false;
+				GameOver = true;
+			}
+		}
+		else if (answer.compareToIgnoreCase("S") == 0)
+		{
+			playerStay();
+			dealerTurn = true;
+		}
+		else
+		{
+			System.out.println("Please use either S or H.");
+		}
+		uiPT.close();
+	}
+	
+	private static void playerHit()
+	{
+		cardsPlayer.cardDraw(playDeck);
+		System.out.println("You draw: " + cardsPlayer.cardGet(cardsPlayer.deckSize()-1).toString());
+	}
+	
+	private static void playerStay()
+	{
+		System.out.println("Player stands. Dealer's turn.");
+		playerTurn = false;
+	}
+	
+	private static void dealerTurn()
 	{
 		
 	}

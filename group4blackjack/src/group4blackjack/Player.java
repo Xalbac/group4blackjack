@@ -54,4 +54,9 @@ public class Player {
 		this.name = name;
 	}
 
+	public void Winner()
+	{
+		System.out.println(name + " is the winner!");
+	}
+	
 }
