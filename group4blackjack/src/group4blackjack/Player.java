@@ -10,9 +10,19 @@ public class Player {
 		this.bet = iBet;
 	}
 	
-	private void takeMoney()
+	public int showBet()
 	{
-		
+		return this.bet;
+	}
+	
+	public void takeMoney()
+	{
+		this.money -= this.bet;
+	}
+	
+	public void giveMoney()
+	{
+		this.money += this.bet;
 	}
 	
 	public int playerMoney()

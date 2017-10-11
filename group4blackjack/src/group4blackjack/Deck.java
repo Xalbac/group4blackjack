@@ -156,5 +156,4 @@ public class Deck {
 		// Returns the value of cards. 
 		return entireValue;
 	}
-
 }
