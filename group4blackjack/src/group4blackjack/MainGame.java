@@ -45,35 +45,37 @@ public class MainGame
 			opponentTurn = false;
 			playerTurn = false;
 			
+			// Ask the player if they want to quit or play. 
 			System.out.println("Would you like to [P] Play or [Q] Quit?");
 			String answer = ui.next();
 			
+			// Check if the player wants to play. 
 			if (answer.equalsIgnoreCase("P"))
 			{
-				try
-				{
-					System.out.println("Game starts...");
-					gameStart();
-				} catch (Exception e)
-				{
-					e.printStackTrace();
-				}
+				System.out.println("Game starts...");
+				gameStart();
 			}
+			
+			// If the player decides to quit like a little bitch...
 			else if (answer.equalsIgnoreCase("Q"))
 			{
 				GameOver = true;
 				gameQuit();
 			}
+			
+			// Tell the player they need to go to elementary school again, because they can't read. 
 			else
 			{
 				System.out.println("Please use either P or Q.");
 			}
 		}
+		
+		// Display this message to the player. 
 		if (player.getMoney() <= 0)
 		{
-			System.out.println("You have no money to play.\n Bye bye!");
-			System.exit(1);
+			System.out.println("You have no money to play.");
 			ui.close();
+			gameQuit();
 		}
 		ui.close();
 	}
@@ -81,23 +83,32 @@ public class MainGame
 	// Where the game starts after initial "impact". 
 	private static void gameStart()
 	{
+		// Create a new scanner for player input. 
 		Scanner uiGS = new Scanner(System.in);
+		
+		// Ask the player how much they want to bet. 
 		System.out.println("How much would you like to bet?");
+		
+		// Try to get the bet and money. 
 		try 
 		{
 			player.setBet(uiGS.nextInt());
 		}
 		catch (InputMismatchException e)
 		{
-			e.getMessage();
+			e.printStackTrace();
 		}
 		
+		// If the player bet's too much, take their wallet. 
 		if (player.getBet() > player.getMoney())
 		{
 			System.out.println("You cannot bet more than what you have!");
 		}
+		
+		// Otherwise, don't take their wallet. 
 		else
 		{
+			// But take their money instead!
 			player.takeMoney();
 			
 			playDeck.FillDeckWithCards();
