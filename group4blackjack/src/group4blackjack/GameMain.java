@@ -35,13 +35,14 @@ public class GameMain
 		player.setName(answer);
 		
 		// Print out his name and his starting money.
-		System.out.println("Welcome " + player.getName() + "\nYou have: " + money);
+		System.out.println("Welcome " + player.getName());
 		
 		// As long as the player has money, allow them to play.
 		while (money > 0)
 		{
 			// Ask the player about the bet. 
 			System.out.println("How much would you like to bet?");
+			System.out.println("You have: " + money);
 			
 			try
 			{
@@ -96,7 +97,7 @@ public class GameMain
 							System.out.println("Busted!");
 							money -= bet;
 							playerTurn = false;
-							dealerTurn = true;
+							//dealerTurn = true;
 							break;
 						}
 					// If the player stands end the player's turn. 
