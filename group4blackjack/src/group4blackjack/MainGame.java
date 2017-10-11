@@ -259,6 +259,7 @@ public class MainGame
 				player.whoWinner();
 				playerTurn = false;
 				player.giveMoney();
+				System.out.println("You have: " + player.getMoney());
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
 			}
@@ -270,6 +271,7 @@ public class MainGame
 				opponentTurn = false;
 				playerTurn = false;
 				player.giveMoney();
+				System.out.println("You have: " + player.getMoney());
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
 			}
