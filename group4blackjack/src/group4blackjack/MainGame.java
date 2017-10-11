@@ -84,13 +84,13 @@ public class MainGame
 	private static void gameStart()
 	{
 		// Create a new scanner for player input. 
-		Scanner uiGS = new Scanner(System.in);
+		
 		
 		// Ask the player how much they want to bet. 
 		System.out.println("How much would you like to bet?");
 		
 		// Try to get the bet and money. 
-		try 
+		try (Scanner uiGS = new Scanner(System.in);)
 		{
 			player.setBet(uiGS.nextInt());
 		}
