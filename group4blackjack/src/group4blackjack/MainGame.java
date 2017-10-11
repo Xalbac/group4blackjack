@@ -186,7 +186,7 @@ public class MainGame
 			
 			
 			// If the player chooses hit.
-			if (answer.equalsIgnoreCase("H"))
+			/*if (answer.equalsIgnoreCase("H"))
 			{
 				playerHit();
 			}
@@ -202,7 +202,7 @@ public class MainGame
 			else
 			{
 				System.out.println("Please use either S or H.");
-			}
+			}*/
 			
 			//uiPT.close();
 		}
