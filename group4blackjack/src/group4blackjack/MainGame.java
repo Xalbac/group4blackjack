@@ -100,10 +100,22 @@ public class MainGame
 			e.printStackTrace();
 		}*/
 		
-		int answer = 0;
+		String answer;
+		/*boolean betHolder=true;
 		
-		answer = ui.nextInt();
-		System.out.println("Please write a valid bet number");
+		while (betHolder==true) {*/
+			answer = ui.next();
+			if (Character.isParsable(answer)) {
+				System.out.println("Please enter a valid bet number");
+			} else {
+				//betHolder=true;
+
+			//}
+		
+			
+		
+		
+		}
 		
 		
 		player.setBet(answer);
