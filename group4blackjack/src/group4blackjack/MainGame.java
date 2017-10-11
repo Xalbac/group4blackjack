@@ -289,7 +289,7 @@ public class MainGame
 	// Display the message and quit the game when the player chooses Quit.
 	private static void gameQuit()
 	{
-		System.out.println("Chicken...");
+		System.out.println("See you next time!");
 		GameOver = true;
 		System.exit(1);
 	}
