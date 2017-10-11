@@ -21,6 +21,7 @@ public class MainGame
 	// High impact violence. 
 	public static void main(String[] args)
 	{
+		// Initialise the scanner and display a welcome message. 
 		Scanner ui = new Scanner(System.in);
 		System.out.println("Welcome to the worst blackjack ever!\n");
 		System.out.println("What is your name?");
