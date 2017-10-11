@@ -157,15 +157,8 @@ public class MainGame
 				playerTurn();
 			}
 		}
-		//uiGS.close();
 	}
-	
-	// Checks if you win at start. 
-	private static void checkIfWinAtStart()
-	{
-		
-	}
-	
+
 	// Player's turn. 
 	private static void playerTurn()
 	{
@@ -197,24 +190,6 @@ public class MainGame
 			{
 				System.out.println("Go back to elementary school");
 			}
-			// Get the player's answer.
-			/*try (Scanner uiPT = new Scanner(System.in);){
-				String answer = uiPT.next();
-				// If the player chooses hit.
-				if (answer.equalsIgnoreCase("H"))
-				{
-					playerHit();
-				}
-				
-				// If the player chooses stand. 
-				else if (answer.equalsIgnoreCase("S"))
-				{
-					playerStand();
-					opponentTurn();
-				}
-			} catch (InputMismatchException e) {
-				System.out.println("Input a valid answer: H or S");
-			}*/
 		}
 	}
 	
