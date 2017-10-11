@@ -33,13 +33,13 @@ public class Player {
 	// When the player hits.
 	public void hit()
 	{
-		System.out.println(name+ " hits");
+		System.out.println(name+ " hits.\n");
 	}
 	
 	// When the player stays.
 	public void stay()
 	{
-		System.out.println(name + " stands");
+		System.out.println(name + " stands.\n");
 	}
 	
 	// Returns the player name. 
@@ -56,11 +56,16 @@ public class Player {
 
 	public void Winner()
 	{
-		System.out.println(name + " is the winner!");
+		System.out.println(name + " is the winner!\n");
 	}
 	
 	public void whoTurn()
 	{
-		System.out.println(name + "'s turn. ");
+		System.out.println(name + "'s turn.\n");
+	}
+	
+	public void whoDraws()
+	{
+		System.out.println(name + " draws...\n");
 	}
 }

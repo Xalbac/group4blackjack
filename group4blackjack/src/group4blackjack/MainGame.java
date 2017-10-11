@@ -162,6 +162,7 @@ public class MainGame
 	private static void playerHit()
 	{
 		cardsPlayer.cardDraw(playDeck);
+		player.whoDraws();
 		System.out.println("You draw: " + cardsPlayer.cardGet(cardsPlayer.deckSize()-1).toString());
 	}
 	
@@ -176,10 +177,18 @@ public class MainGame
 		while (dealerTurn = true)
 		{
 			dealer.whoTurn();
+			
+			System.out.println(dealer.getName() + " reveals hidden card.");
+			System.out.println("His deck is valued at: " + cardsDealer.cardsValue());
+			
 			while (cardsDealer.cardsValue() < 17)
 			{
-				System.out.println("");
+				dealer.whoDraws();
+				cardsDealer.cardDraw(playDeck);
+				System.out.println(cardsDealer.cardGet(cardsDealer.deckSize()-1).toString());
 			}
+			
+			dealerTurn = false;
 		}
 	}
 	
