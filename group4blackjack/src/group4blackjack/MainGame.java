@@ -204,7 +204,7 @@ public class MainGame
 				System.out.println("Please use either S or H.");
 			}
 			
-			uiPT.close();
+			//uiPT.close();
 		}
 	}
 	
