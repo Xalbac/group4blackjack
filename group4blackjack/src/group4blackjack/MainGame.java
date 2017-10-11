@@ -131,6 +131,8 @@ public class MainGame
 	{
 		player.whoTurn();
 		
+		while (playerTurn == true)
+		{
 		Scanner uiPT = new Scanner(System.in);
 		
 		System.out.println("Would you like to [H] Hit or [S] Stand?");
@@ -144,12 +146,14 @@ public class MainGame
 			{
 				player.whoBusted();
 				playerTurn = false;
+				DetermineWinner();
 			}
 		}
 		else if (answer.equalsIgnoreCase("S"))
 		{
 			player.whoStands(dealer.getName());
 			playerStay();
+			playerTurn = false;
 			dealerTurn = true;
 			dealerTurn();
 		}
@@ -157,7 +161,9 @@ public class MainGame
 		{
 			System.out.println("Please use either S or H.");
 		}
+		
 		uiPT.close();
+		}
 	}
 	
 	private static void playerHit()
@@ -175,9 +181,11 @@ public class MainGame
 	
 	private static void dealerTurn()
 	{
+		while (dealerTurn == true)
+		{
 		dealer.whoTurn();
 
-		System.out.println(dealer.getName() + " reveals hidden card.");
+		System.out.println(dealer.getName() + " reveals hidden card." + cardsDealer.cardGet(1).toString());
 		System.out.println("His deck is valued at: " + cardsDealer.cardsValue());
 			
 		while (cardsDealer.cardsValue() < 17)
@@ -192,9 +200,10 @@ public class MainGame
 			dealerTurn = false;
 		}
 		dealer.whoStands();
+		}
 	}
 	
-	private void DetermineWinner()
+	private static void DetermineWinner()
 	{
 		if (cardsPlayer.cardsValue() > cardsDealer.cardsValue())
 		{
@@ -208,6 +217,7 @@ public class MainGame
 		{
 			dealer.Winner();
 		}
+		else if (cardsPlayer.cardsValue() < cardsDealer.cardsValue());
 	}
 	
 	private static void gameQuit()
