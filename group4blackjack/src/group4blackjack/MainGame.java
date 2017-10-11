@@ -138,7 +138,7 @@ public class MainGame
 			playerTurn = true;
 			playerTurn();
 		}
-		uiGS.close();
+		//uiGS.close();
 	}
 	
 	// Checks if you win at start. 
