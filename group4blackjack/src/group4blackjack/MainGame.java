@@ -151,6 +151,7 @@ public class MainGame
 		{
 			playerStay();
 			dealerTurn = true;
+			dealerTurn();
 		}
 		else
 		{
