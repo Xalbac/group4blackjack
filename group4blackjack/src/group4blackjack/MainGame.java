@@ -8,8 +8,8 @@ public class MainGame
 {
 	// Initialise the classes.
 	static Deck playDeck = new Deck();
-	static Deck cardsPlayer = new Deck();
-	static Deck cardsOpponent = new Deck();
+
+	
 	static Player player = new Player();
 	static Player opponent = new Player();
 	
@@ -108,6 +108,8 @@ public class MainGame
 		// Otherwise, don't take their wallet. 
 		else
 		{
+			Deck cardsPlayer = new Deck();
+			Deck cardsOpponent = new Deck();
 			// But take their money instead!
 			player.takeMoney();
 			
@@ -120,10 +122,12 @@ public class MainGame
 			
 			// Now draw 2 cards for the player and the opponent from the deck. 
 			// Draw 2 cards for the player. 
+			
 			cardsPlayer.cardDraw(playDeck);
 			cardsPlayer.cardDraw(playDeck);
 			
 			// Draw 2 cards for the opponent. 
+			
 			cardsOpponent.cardDraw(playDeck);
 			cardsOpponent.cardDraw(playDeck);
 			
