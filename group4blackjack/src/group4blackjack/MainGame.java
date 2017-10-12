@@ -27,7 +27,7 @@ public class MainGame
 	MainGame(String pName, String oName)
 	{
 		// Start player off with money.
-		int moneyIn = 1000000;
+		int moneyIn = 1000;
 		player.moneySet(moneyIn);
 		
 		// Set the player and opponent names.
@@ -194,7 +194,7 @@ public class MainGame
 				}
 				else
 				{
-					System.out.println("Please use either [P] or [S].");
+					System.out.println("Please use either [P] or [S] or [D].");
 				}
 			}
 			else
@@ -272,7 +272,8 @@ public class MainGame
 		System.out.println("Your total : " + cardsPlayer.cardsValue());
 
 		// If the value of the cards exceeds 21.
-		if (cardsPlayer.cardsValue() > 21) {
+		if (cardsPlayer.cardsValue() > 21)
+		{
 			player.whoBusted();
 			playerTurn = false;
 			opponent.whoWinner(player.nameGet());
@@ -283,7 +284,8 @@ public class MainGame
 		}
 
 		// If the player gets blackjack.
-		else if (cardsPlayer.cardsValue() == 21) {
+		else if (cardsPlayer.cardsValue() == 21)
+		{
 			player.whoWinner(opponent.nameGet());
 			playerTurn = false;
 			opponentTurn = false;

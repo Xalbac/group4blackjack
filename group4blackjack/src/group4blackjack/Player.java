@@ -24,7 +24,6 @@ public class Player {
 	public void betDoubleDown()
 	{
 		this.money = this.money - this.bet;
-		this.bet = 2*this.bet;
 	}
 	
 	// Shows player money. 
@@ -42,6 +41,7 @@ public class Player {
 	// If the player chose double down.
 	public void moneyGiveDoubleDown()
 	{
+		this.bet = 2*this.bet;
 		this.money = this.money + this.bet;
 	}
 	
