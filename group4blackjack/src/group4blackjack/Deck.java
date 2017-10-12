@@ -9,13 +9,13 @@ public class Deck
 	private ArrayList<Card> cards;
 
 	// Enum table for Suits.
-	public enum Suits
+	protected enum Suits
 	{
 		SPADES, HEARTS, DIAMONDS, CLUBS;
 	}
 
 	// Enum table for Ranks.
-	public enum Ranks
+	protected enum Ranks
 	{
 		ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
 	}
