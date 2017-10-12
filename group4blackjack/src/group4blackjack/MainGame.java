@@ -26,6 +26,7 @@ public class MainGame
 	// This is to avoid the STATIC thing.
 	MainGame(String pName, String oName)
 	{
+		// Start player off with money.
 		int moneyIn = 100;
 		player.moneySet(moneyIn);
 		
