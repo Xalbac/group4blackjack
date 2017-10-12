@@ -128,6 +128,7 @@ public class MainGame
 			playerTurn = false;
 			opponentTurn = false;
 			player.moneyGive();
+			player.whoMoneyWinner();
 			cardsPlayer.moveCardsToDeck(playDeck);
 			cardsOpponent.moveCardsToDeck(playDeck);
 		}
