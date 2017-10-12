@@ -5,6 +5,7 @@ public class Player {
 	// Initialise the values.
 	private int bet;
 	private int money;
+	private int winnerMoney;
 	private String name;
 	
 	// Show the bet.
@@ -38,7 +39,7 @@ public class Player {
 	}
 	
 	// Take player's money.
-	public void moneyTake()
+	private void moneyTake()
 	{
 		this.money = this.money - this.bet;
 	}
@@ -64,7 +65,7 @@ public class Player {
 	// Get the name of the drawer and output the message.
 	public void whoDraws()
 	{
-		System.out.println(this.name + " draws...\n");
+		System.out.println(this.name + " draws...");
 	}
 	
 	// When the player hits.
@@ -82,7 +83,7 @@ public class Player {
 	// Get the name of the stander and the opponent and output the message.
 	public void whoStands(String sName)
 	{
-		System.out.println(this.name + " stands.\n" + sName + "'s turn.\n");
+		System.out.println(this.name + " stands." + sName + "'s turn.\n");
 	}
 	
 	// Get the name of the turner and output the message.
@@ -92,13 +93,36 @@ public class Player {
 	}
 	
 	// Get the name of the winner and output the message.
-	public void whoWinner()
+	public void whoWinner(String oppname)
 	{
-		System.out.println(this.name + " is the winner!\n");
+		System.out.println(this.name + " is the winner and " + oppname + " is the loser!");
 	}
 	
-	public void whoWinnerMoney()
+	// Count how much the player wins.
+	private void whoWinnerAmount()
+	{
+		this.winnerMoney = this.bet + this.bet;
+	}
+	
+	// Display how much money they have now. 
+	public void whoMoneyWinner()
 	{
 		System.out.println("Your new money balance is: " + this.money + "$.");
+		whoWinnerAmount();
+		System.out.println("You won: " + winnerMoney + "$.\n");
+	}
+	
+	// Display the money the loser is left with. 
+	public void whoMoneyLoser()
+	{
+		System.out.println("Your new money balance is: " + this.money + "$.");
+	}
+	
+	// Display how much the player is betting and how much money they have left. 
+	public void playerBet()
+	{
+		System.out.println("You're betting: " + this.bet + "$, from your: " + this.money + "$.");
+		moneyTake();
+		System.out.println("You now have: " + money + "$.\n");
 	}
 }

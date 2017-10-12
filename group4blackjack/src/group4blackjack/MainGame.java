@@ -98,13 +98,7 @@ public class MainGame
 		}
 		
 		// Display how much they're betting. 
-		System.out.println("You're betting: " + player.betGet() + "$, from your: " + player.moneyGet() + "$.\n");
-				
-		// But take their money!
-		player.moneyTake();
-		
-		// Display the new balance of the player. 
-		System.out.println("You now have: " + player.moneyGet() + "$.");
+		player.playerBet();
 		
 		// Create a deck of cards to play with. 
 		playDeck.FillDeckWithCards();
@@ -129,7 +123,7 @@ public class MainGame
 		// Check if the player wins at start. 
 		if (cardsPlayer.cardsValue() == 21)
 		{
-			player.whoWinner();
+			player.whoWinner(opponent.nameGet());
 			playerTurn = false;
 			opponentTurn = false;
 			player.moneyGive();
@@ -140,11 +134,12 @@ public class MainGame
 		// Or if the opponent wins.
 		else if (cardsOpponent.cardsValue() == 21)
 		{
-			opponent.whoWinner();
+			opponent.whoWinner(player.nameGet());
 			playerTurn = false;
 			opponentTurn = false;
 			cardsPlayer.moveCardsToDeck(playDeck);
 			cardsOpponent.moveCardsToDeck(playDeck);
+			player.whoMoneyLoser();
 		}
 		
 		// Otherwise let's get the game started. 
@@ -185,7 +180,7 @@ public class MainGame
 			}
 			else
 			{
-				System.out.println("Go back to elementary school");
+				System.out.println("Please use either [P] or [S].");
 			}
 		}
 	}
@@ -204,22 +199,23 @@ public class MainGame
 		{
 			player.whoBusted();
 			playerTurn = false;
-			opponent.whoWinner();
+			opponent.whoWinner(player.nameGet());
 			opponentTurn = false;
 			cardsPlayer.moveCardsToDeck(playDeck);
 			cardsOpponent.moveCardsToDeck(playDeck);
+			player.whoMoneyLoser();
 		}
 		
 		// If the player gets blackjack.
 		else if (cardsPlayer.cardsValue() == 21)
 		{
-			player.whoWinner();
+			player.whoWinner(opponent.nameGet());
 			playerTurn = false;
 			opponentTurn = false;
 			cardsPlayer.moveCardsToDeck(playDeck);
 			cardsOpponent.moveCardsToDeck(playDeck);
 			player.moneyGive();
-			player.whoWinnerMoney();
+			player.whoMoneyWinner();
 		}
 	}
 	
@@ -258,10 +254,10 @@ public class MainGame
 			{
 				opponent.whoBusted();
 				opponentTurn = false;
-				player.whoWinner();
+				player.whoWinner(opponent.nameGet());
 				playerTurn = false;
 				player.moneyGive();
-				player.whoWinnerMoney();
+				player.whoMoneyWinner();
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
 			}
@@ -269,11 +265,11 @@ public class MainGame
 			// If the player has higher value of cards. 
 			else if (cardsPlayer.cardsValue() > cardsOpponent.cardsValue())
 			{
-				player.whoWinner();
+				player.whoWinner(opponent.nameGet());
 				opponentTurn = false;
 				playerTurn = false;
 				player.moneyGive();
-				player.whoWinnerMoney();
+				player.whoMoneyWinner();
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
 			}
@@ -281,11 +277,12 @@ public class MainGame
 			// If it's a draw or the opponent has more value of cards. 
 			else if (cardsPlayer.cardsValue() <= cardsOpponent.cardsValue())
 			{
-				opponent.whoWinner();
+				opponent.whoWinner(player.nameGet());
 				opponentTurn = false;
 				playerTurn = false;
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
+				player.whoMoneyLoser();
 			}
 		}
 	}
