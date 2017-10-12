@@ -2,33 +2,15 @@ package group4blackjack;
 
 public class Player {
 	
-	// Initialise standard values. 
-	private int money;
+	// Initialise the values.
 	private int bet;
+	private int money;
 	private String name;
-	
-	// Get the player bet from Main.
-	public void setBet(int iBet)
-	{
-		this.bet = iBet;
-	}
 	
 	// Show the bet.
 	public int getBet()
 	{
 		return this.bet;
-	}
-	
-	// Take player's money.
-	public void takeMoney()
-	{
-		this.money = this.money - this.bet;
-	}
-	
-	// Give the player money.
-	public void giveMoney()
-	{
-		this.money = this.bet + this.bet;
 	}
 	
 	// Shows player money. 
@@ -37,10 +19,16 @@ public class Player {
 		return this.money;
 	}
 	
-	// Set the money.
-	public void setMoney(int moneyIn)
+	// Returns the player name. 
+	public String getName()
 	{
-		this.money = moneyIn;
+		return this.name;
+	}
+	
+	// Give the player money.
+	public void giveMoney()
+	{
+		this.money = this.bet + this.bet;
 	}
 	
 	// When the player hits.
@@ -49,34 +37,40 @@ public class Player {
 		System.out.println(name+ " hits.\n");
 	}
 	
-	// When the player stays.
-	public void Stay()
+	// Get the player bet from Main.
+	public void setBet(int iBet)
 	{
-		System.out.println(name + " stands.\n");
+		this.bet = iBet;
 	}
 	
-	// Returns the player name. 
-	public String getName()
+	// Set the money.
+	public void setMoney(int moneyIn)
 	{
-		return this.name;
+		this.money = moneyIn;
 	}
-
+	
 	// Sets the name. 
 	public void setName(String name)
 	{
 		this.name = name;
 	}
-
-	// Get the name of the winner and output the message.
-	public void whoWinner()
-	{
-		System.out.println(name + " is the winner!\n");
-	}
 	
-	// Get the name of the turner and output the message.
-	public void whoTurn()
+	// When the player stays.
+	public void Stay()
 	{
-		System.out.println(name + "'s turn.\n");
+		System.out.println(name + " stands.\n");
+	}
+
+	// Take player's money.
+	public void takeMoney()
+	{
+		this.money = this.money - this.bet;
+	}
+
+	// Get the name of the buster and output the message.
+	public void whoBusted()
+	{
+		System.out.println(name + " busted!\n");
 	}
 	
 	// Get the name of the drawer and output the message.
@@ -85,10 +79,10 @@ public class Player {
 		System.out.println(name + " draws...\n");
 	}
 	
-	// Get the name of the buster and output the message.
-	public void whoBusted()
+	// Get the name of the stander and output the message.
+	public void whoStands()
 	{
-		System.out.println(name + " busted!\n");
+		System.out.println(name + " stands.\n");
 	}
 	
 	// Get the name of the stander and the opponent and output the message.
@@ -98,9 +92,15 @@ public class Player {
 		System.out.println(name + " stands.\n" + sname + "'s turn.\n");
 	}
 	
-	// Get the name of the stander and output the message.
-	public void whoStands()
+	// Get the name of the turner and output the message.
+	public void whoTurn()
 	{
-		System.out.println(name + " stands.\n");
+		System.out.println(name + "'s turn.\n");
+	}
+	
+	// Get the name of the winner and output the message.
+	public void whoWinner()
+	{
+		System.out.println(name + " is the winner!\n");
 	}
 }

@@ -6,7 +6,9 @@ import java.util.Scanner;
 
 public class lol
 {
+	// Initialise scanner. 
 	private Scanner ui = new Scanner(System.in);
+	
 	// Initialise the classes.
 	private Deck playDeck = new Deck();
 	private Deck cardsPlayer = new Deck();
