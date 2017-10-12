@@ -27,7 +27,7 @@ public class MainGame
 	MainGame(String pName, String oName)
 	{
 		// Start player off with money.
-		int moneyIn = 100;
+		int moneyIn = 1000000;
 		player.moneySet(moneyIn);
 		
 		// Set the player and opponent names.
