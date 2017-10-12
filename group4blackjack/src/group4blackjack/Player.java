@@ -3,8 +3,8 @@ package group4blackjack;
 public class Player {
 	
 	// Initialise standard values. 
-	private int money = 100;
-	private int bet = 0;
+	private int money;
+	private int bet;
 	private String name;
 	
 	// Get the player bet from Main.
