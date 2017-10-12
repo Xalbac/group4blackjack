@@ -103,6 +103,9 @@ public class MainGame
 		// But take their money!
 		player.moneyTake();
 		
+		// Display the new balance of the player. 
+		System.out.println("You now have: " + player.moneyGet() + "$.");
+		
 		// Create a deck of cards to play with. 
 		playDeck.FillDeckWithCards();
 		playDeck.shuffleDeck();	// Shuffle the cards. 
