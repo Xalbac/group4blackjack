@@ -37,6 +37,12 @@ public class Player {
 		return this.money;
 	}
 	
+	// Set the money.
+	public void setMoney(int moneyIn)
+	{
+		this.money = moneyIn;
+	}
+	
 	// When the player hits.
 	public void Hit()
 	{
