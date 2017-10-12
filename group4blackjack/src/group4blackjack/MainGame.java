@@ -219,6 +219,7 @@ public class MainGame
 			cardsPlayer.moveCardsToDeck(playDeck);
 			cardsOpponent.moveCardsToDeck(playDeck);
 			player.moneyGive();
+			player.whoWinnerMoney();
 		}
 	}
 	
@@ -260,7 +261,7 @@ public class MainGame
 				player.whoWinner();
 				playerTurn = false;
 				player.moneyGive();
-				System.out.println("You have now have: " + player.moneyGet() + "$.\n");
+				player.whoWinnerMoney();
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
 			}
@@ -272,7 +273,7 @@ public class MainGame
 				opponentTurn = false;
 				playerTurn = false;
 				player.moneyGive();
-				System.out.println("You have: " + player.moneyGet() + "$.\n");
+				player.whoWinnerMoney();
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
 			}

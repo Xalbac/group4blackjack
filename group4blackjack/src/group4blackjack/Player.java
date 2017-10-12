@@ -58,43 +58,47 @@ public class Player {
 	// Get the name of the buster and output the message.
 	public void whoBusted()
 	{
-		System.out.println(name + " busted!\n");
+		System.out.println(this.name + " busted!\n");
 	}
 
 	// Get the name of the drawer and output the message.
 	public void whoDraws()
 	{
-		System.out.println(name + " draws...\n");
+		System.out.println(this.name + " draws...\n");
 	}
 	
 	// When the player hits.
 	public void whoHits()
 	{
-		System.out.println(name+ " hits.\n");
+		System.out.println(this.name+ " hits.\n");
 	}
 	
 	// Get the name of the stander and output the message.
 	public void whoStands()
 	{
-		System.out.println(name + " stands.\n");
+		System.out.println(this.name + " stands.\n");
 	}
 	
 	// Get the name of the stander and the opponent and output the message.
 	public void whoStands(String sName)
 	{
-		String sname = sName;
-		System.out.println(name + " stands.\n" + sname + "'s turn.\n");
+		System.out.println(this.name + " stands.\n" + sName + "'s turn.\n");
 	}
 	
 	// Get the name of the turner and output the message.
 	public void whoTurn()
 	{
-		System.out.println(name + "'s turn.\n");
+		System.out.println(this.name + "'s turn.\n");
 	}
 	
 	// Get the name of the winner and output the message.
 	public void whoWinner()
 	{
-		System.out.println(name + " is the winner!\n");
+		System.out.println(this.name + " is the winner!\n");
+	}
+	
+	public void whoWinnerMoney()
+	{
+		System.out.println("Your new money balance is: " + this.money + "$.");
 	}
 }
