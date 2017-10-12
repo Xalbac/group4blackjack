@@ -20,6 +20,13 @@ public class Player {
 		this.bet = iBet;
 	}
 	
+	// If the player chose double down.
+	public void betDoubleDown()
+	{
+		this.money = this.money - this.bet;
+		this.bet = 2*this.bet;
+	}
+	
 	// Shows player money. 
 	public int moneyGet()
 	{
@@ -30,6 +37,12 @@ public class Player {
 	public void moneyGive()
 	{
 		this.money = this.money + this.bet + this.bet;
+	}
+	
+	// If the player chose double down.
+	public void moneyGiveDoubleDown()
+	{
+		this.money = this.money + this.bet;
 	}
 	
 	// Set the money.

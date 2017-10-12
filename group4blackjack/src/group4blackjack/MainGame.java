@@ -20,6 +20,7 @@ public class MainGame
 	private boolean playerTurn = false;
 	private boolean opponentTurn = false;
 	private boolean GameOver = false;
+	private boolean doubleDown = false;
 	
 	// Where the game actually starts.
 	// This is to avoid the STATIC thing.
@@ -157,28 +158,65 @@ public class MainGame
 		// Display player's turn. 
 		player.whoTurn();
 		
+		// At first, enable double down. 
+		doubleDown = true;
+		
 		// While it's player's turn...
 		while (playerTurn == true)
 		{
-			// Ask the player what they want to do. 
-			System.out.println("Would you like to [H] Hit or [S] Stand?");
 			
-			String answer = ui.next();
-			// If the player chooses hit.
-			if (answer.equalsIgnoreCase("H"))
+			if (doubleDown == true)
 			{
-				playerHit();
-			}
-			
-			// If the player chooses stand. 
-			else if (answer.equalsIgnoreCase("S"))
-			{
-				playerStand();
-				opponentTurn();
+				// Ask the player what they want to do. 
+				System.out.println("Would you like to [H] Hit or [S] Stand or [D] Double Down? Double down ends your turn.");
+				
+				String answer = ui.next();
+				// If the player chooses hit.
+				if (answer.equalsIgnoreCase("H"))
+				{
+					doubleDown = false;
+					playerHit();
+				}
+				
+				// If the player chooses stand. 
+				else if (answer.equalsIgnoreCase("S"))
+				{
+					doubleDown = false;
+					playerStand();
+					opponentTurn();
+				}
+				else if (answer.equalsIgnoreCase("D"))
+				{
+					playerDoubleDown();
+					opponentTurn();
+				}
+				else
+				{
+					System.out.println("Please use either [P] or [S].");
+				}
 			}
 			else
 			{
-				System.out.println("Please use either [P] or [S].");
+				// Ask the player what they want to do. 
+				System.out.println("Would you like to [H] Hit or [S] Stand?");
+				
+				String answer = ui.next();
+				// If the player chooses hit.
+				if (answer.equalsIgnoreCase("H"))
+				{
+					playerHit();
+				}
+				
+				// If the player chooses stand. 
+				else if (answer.equalsIgnoreCase("S"))
+				{
+					playerStand();
+					opponentTurn();
+				}
+				else
+				{
+					System.out.println("Please use either [P] or [S].");
+				}
 			}
 		}
 	}
@@ -213,6 +251,43 @@ public class MainGame
 			cardsPlayer.moveCardsToDeck(playDeck);
 			cardsOpponent.moveCardsToDeck(playDeck);
 			player.moneyGive();
+			player.whoMoneyWinner();
+		}
+	}
+	
+	// Player chooses double down. 
+	private void playerDoubleDown()
+	{
+		// Calculate the double down bet. 
+		player.betDoubleDown();
+		
+		// Draw a card. Display who is drawing. Display the card and value.
+		cardsPlayer.cardDraw(playDeck);
+		player.whoDraws();
+		playerTurn = false;
+		opponentTurn = true;
+		System.out.println("You draw: " + cardsPlayer.cardGet(cardsPlayer.deckSize() - 1).toString());
+		System.out.println("Your total : " + cardsPlayer.cardsValue());
+
+		// If the value of the cards exceeds 21.
+		if (cardsPlayer.cardsValue() > 21) {
+			player.whoBusted();
+			playerTurn = false;
+			opponent.whoWinner(player.nameGet());
+			opponentTurn = false;
+			cardsPlayer.moveCardsToDeck(playDeck);
+			cardsOpponent.moveCardsToDeck(playDeck);
+			player.whoMoneyLoser();
+		}
+
+		// If the player gets blackjack.
+		else if (cardsPlayer.cardsValue() == 21) {
+			player.whoWinner(opponent.nameGet());
+			playerTurn = false;
+			opponentTurn = false;
+			cardsPlayer.moveCardsToDeck(playDeck);
+			cardsOpponent.moveCardsToDeck(playDeck);
+			player.moneyGiveDoubleDown();
 			player.whoMoneyWinner();
 		}
 	}
@@ -254,7 +329,14 @@ public class MainGame
 				opponentTurn = false;
 				player.whoWinner(opponent.nameGet());
 				playerTurn = false;
-				player.moneyGive();
+				if (doubleDown == true)
+				{
+					player.moneyGiveDoubleDown();
+				}
+				else
+				{
+					player.moneyGive();
+				}
 				player.whoMoneyWinner();
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
@@ -266,7 +348,14 @@ public class MainGame
 				player.whoWinner(opponent.nameGet());
 				opponentTurn = false;
 				playerTurn = false;
-				player.moneyGive();
+				if (doubleDown == true)
+				{
+					player.moneyGiveDoubleDown();
+				}
+				else
+				{
+					player.moneyGive();
+				}
 				player.whoMoneyWinner();
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
