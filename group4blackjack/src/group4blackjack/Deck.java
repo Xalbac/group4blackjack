@@ -3,46 +3,61 @@ package group4blackjack;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Deck {
+public class Deck 
+{
+	// Create an array list for cards. 
 	private ArrayList<Card> cards;
 
 	// Enum table for Suits.
-	public enum Suits {
+	public enum Suits
+	{
 		SPADES, HEARTS, DIAMONDS, CLUBS;
 	}
 
 	// Enum table for Ranks.
-	public enum Ranks {
+	public enum Ranks
+	{
 		ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
 	}
 
 	// Create a deck,
-	public Deck() {
+	public Deck()
+	{
 		// Create new deck.
 		this.cards = new ArrayList<Card>();
 	}
 
 	// 52 cards.
-	public void FillDeckWithCards() {
+	public void FillDeckWithCards()
+	{
 		// Loop through the suits.
-		for (Suits cardSuits : Suits.values()) {
+		for (Suits cardSuits : Suits.values())
+		{
 			// Loop through the ranks.
-			for (Ranks cardRank : Ranks.values()) {
+			for (Ranks cardRank : Ranks.values())
+			{
 				// Add new card.
 				this.cards.add(new Card(cardSuits, cardRank));
-
 			}
 		}
 	}
 
 	// Shuffle the deck, obviously.
-	public void shuffleDeck() {
+	public void shuffleDeck()
+	{
 		// New temporary arrayList for shuffled cards.
 		ArrayList<Card> tempoDeck = new ArrayList<Card>();
+		
+		//Randomise the cards in the deck. 
 		Random random = new Random();
 		int indexrandom = 0;
+		
+		// The size of our deck. 
 		int originalSizeofDeck = this.cards.size();
-		for (int i = 0; i < originalSizeofDeck; i++) {
+		
+		// Shuffle each card individualy in the deck. 
+		for (int i = 0; i < originalSizeofDeck; i++)
+		{
 			indexrandom = random.nextInt((this.cards.size() - 1 - 0) + 1) + 0;
 			tempoDeck.add(this.cards.get(indexrandom));
 			this.cards.remove(indexrandom);
@@ -51,47 +66,58 @@ public class Deck {
 	}
 
 	// Gets 1 card.
-	public Card cardGet(int i) {
+	public Card cardGet(int i)
+	{
 		return this.cards.get(i);
 	}
 
 	// Removes a card from the deck.
-	public void cardRemove(int i) {
+	public void cardRemove(int i)
+	{
 		this.cards.remove(i);
 	}
 
 	// Add cards to the deck.
-	public void cardAdd(Card cardAdd) {
+	public void cardAdd(Card cardAdd)
+	{
 		this.cards.add(cardAdd);
 	}
 
 	// Draws a card from the deck.
-	public void cardDraw(Deck comingFrom) {
+	public void cardDraw(Deck comingFrom)
+	{
 		this.cards.add(comingFrom.cardGet(0));
 		comingFrom.cardRemove(0);
 	}
 
 	// Moves created cards to deck.
-	public void moveCardsToDeck(Deck moveTo) {
-		int deckSize = this.cards.size(); // Initialise a new deck size.
+	public void moveCardsToDeck(Deck moveTo)
+	{
+		// Initialise a new deck size.
+		int deckSize = this.cards.size(); 
+		
 		// Put the cards in the moveTo deck.
-		for (int i = 0; i < deckSize; i++) {
+		for (int i = 0; i < deckSize; i++)
+		{
 			moveTo.cardAdd(this.cardGet(i)); // Move the card.
 		}
 
 		// Empty the deck.
-		for (int i = 0; i < deckSize; i++) {
+		for (int i = 0; i < deckSize; i++)
+		{
 			this.cardRemove(0);
 		}
 	}
 
 	// Calculate the deck size.
-	public int deckSize() {
+	public int deckSize()
+	{
 		return this.cards.size();
 	}
 
 	// Calculate value of the deck
-	public int cardsValue() {
+	public int cardsValue()
+	{
 		int entireValue = 0;	// At initialise, set the value of deck to 0.
 		int aces = 0;			// At initialise, set the value of aces to 0.
 		
