@@ -24,6 +24,10 @@ public class Player {
 	public void betDoubleDown()
 	{
 		this.money = this.money - this.bet;
+		this.bet = 2*this.bet;
+		System.out.println("Your new money balance is: " + this.money + "$.");
+		System.out.println("Your new bet is: " + this.money + "$.");
+		System.out.println("Your bet has doubled! And so will your money if you win!");
 	}
 	
 	// Shows player money. 
@@ -41,8 +45,7 @@ public class Player {
 	// If the player chose double down.
 	public void moneyGiveDoubleDown()
 	{
-		this.bet = 2*this.bet;
-		this.money = this.money + this.bet + this.bet;
+		this.money = this.money +  this.bet + this.bet;
 	}
 	
 	// Set the money.
