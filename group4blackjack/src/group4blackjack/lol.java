@@ -25,17 +25,18 @@ public class lol
 	// This is to avoid the STATIC thing.
 	lol(String pName, String oName)
 	{
-		// Set the player and opponent names.
-		player.setName(pName);
-		opponent.setName(oName);
+		int moneyIn = 100;
+		player.moneySet(moneyIn);
 		
-		player.setMoney(100);
+		// Set the player and opponent names.
+		player.nameSet(pName);
+		opponent.nameSet(oName);
 		
 		// Display the message and player's name and opponent's name. 
-		System.out.println("Welcome " + player.getName()+ "!\n You start off with " + player.getMoney() + "$.\nYou're playing against: " + opponent.getName());
+		System.out.println("Welcome " + player.nameGet()+ "!\n You start off with " + player.moneyGet() + "$.\nYou're playing against: " + opponent.nameGet());
 		
 		// As long as the player has money and the game is not over...
-		while (player.getMoney() > 0 && !GameOver)
+		while (player.moneyGet() > 0 && !GameOver)
 		{
 			// Disable the booleans. 
 			opponentTurn = false;
@@ -67,7 +68,7 @@ public class lol
 		}
 		
 		// Display this message to the player. 
-		if (player.getMoney() <= 0)
+		if (player.moneyGet() <= 0)
 		{
 			System.out.println("You have no money to play.");
 			ui.close();
@@ -81,25 +82,26 @@ public class lol
 	{
 		// Ask the player how much they want to bet. 
 		System.out.println("How much would you like to bet?");
-		System.out.println("Your money: " + player.getMoney() + "$.\n");
+		System.out.println("Your money: " + player.moneyGet() + "$.\n");
 		
 		// Try to get the bet and money. 
 		int answer;
 		answer = ui.nextInt();
-		player.setBet(answer);
+		player.betSet(answer);
 		
 		// If the player bet's too much, take their wallet. 
-		while (player.getBet() > player.getMoney())
+		while (player.betGet() > player.moneyGet())
 		{
 			System.out.println("You cannot bet more than what you have!");
 			answer = ui.nextInt();
-			player.setBet(answer);
+			player.betSet(answer);
 		}
 		
-		System.out.println("You're betting: " + player.getBet() + "$, from your: " + player.getMoney() + "$.\n");
+		// Display how much they're betting. 
+		System.out.println("You're betting: " + player.betGet() + "$, from your: " + player.moneyGet() + "$.\n");
 				
-		// But take their money instead!
-		player.takeMoney();
+		// But take their money!
+		player.moneyTake();
 		
 		// Create a deck of cards to play with. 
 		playDeck.FillDeckWithCards();
@@ -127,7 +129,7 @@ public class lol
 			player.whoWinner();
 			playerTurn = false;
 			opponentTurn = false;
-			player.giveMoney();
+			player.moneyGive();
 			cardsPlayer.moveCardsToDeck(playDeck);
 			cardsOpponent.moveCardsToDeck(playDeck);
 		}
@@ -204,13 +206,23 @@ public class lol
 			cardsPlayer.moveCardsToDeck(playDeck);
 			cardsOpponent.moveCardsToDeck(playDeck);
 		}
+		
+		else if (cardsPlayer.cardsValue() == 21)
+		{
+			player.whoWinner();
+			playerTurn = false;
+			opponentTurn = false;
+			cardsPlayer.moveCardsToDeck(playDeck);
+			cardsOpponent.moveCardsToDeck(playDeck);
+			player.moneyGive();
+		}
 	}
 	
 	// Player chooses stay. 
 	private void playerStand()
 	{
 		// Display that you are standing, opponent's turn is now.
-		System.out.println(player.getName() + " stands.");
+		player.whoStands();
 		playerTurn = false;
 		opponentTurn = true;
 	}
@@ -225,8 +237,8 @@ public class lol
 			opponent.whoTurn();
 	
 			// Show the hidden card and the deck value of the opponent. 
-			System.out.println(opponent.getName() + " reveals hidden card: " + cardsOpponent.cardGet(1).toString());
-			System.out.println("His deck is valued at: " + cardsOpponent.cardsValue());
+			System.out.println(opponent.nameGet() + " reveals hidden card: " + cardsOpponent.cardGet(1).toString());
+			System.out.println(opponent.nameGet() + "'s deck is valued at: " + cardsOpponent.cardsValue());
 				
 			// As long as the opponent's cards are not exceeding 17...
 			while (cardsOpponent.cardsValue() < 17)
@@ -243,8 +255,8 @@ public class lol
 				opponentTurn = false;
 				player.whoWinner();
 				playerTurn = false;
-				player.giveMoney();
-				System.out.println("You have: " + player.getMoney() + "$.\n");
+				player.moneyGive();
+				System.out.println("You have now have: " + player.moneyGet() + "$.\n");
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
 			}
@@ -255,8 +267,8 @@ public class lol
 				player.whoWinner();
 				opponentTurn = false;
 				playerTurn = false;
-				player.giveMoney();
-				System.out.println("You have: " + player.getMoney() + "$.\n");
+				player.moneyGive();
+				System.out.println("You have: " + player.moneyGet() + "$.\n");
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
 			}

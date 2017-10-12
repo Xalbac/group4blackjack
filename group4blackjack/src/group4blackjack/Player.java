@@ -8,63 +8,51 @@ public class Player {
 	private String name;
 	
 	// Show the bet.
-	public int getBet()
+	public int betGet()
 	{
 		return this.bet;
 	}
 	
-	// Shows player money. 
-	public int getMoney()
-	{
-		return this.money;
-	}
-	
-	// Returns the player name. 
-	public String getName()
-	{
-		return this.name;
-	}
-	
-	// Give the player money.
-	public void giveMoney()
-	{
-		this.money = this.bet + this.bet;
-	}
-	
-	// When the player hits.
-	public void Hit()
-	{
-		System.out.println(name+ " hits.\n");
-	}
-	
 	// Get the player bet from Main.
-	public void setBet(int iBet)
+	public void betSet(int iBet)
 	{
 		this.bet = iBet;
 	}
 	
+	// Shows player money. 
+	public int moneyGet()
+	{
+		return this.money;
+	}
+	
+	// Give the player money.
+	public void moneyGive()
+	{
+		this.money = this.money + this.bet + this.bet;
+	}
+	
 	// Set the money.
-	public void setMoney(int moneyIn)
+	public void moneySet(int moneyIn)
 	{
 		this.money = moneyIn;
 	}
 	
-	// Sets the name. 
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-	
-	// When the player stays.
-	public void Stay()
-	{
-		System.out.println(name + " stands.\n");
-	}
-
 	// Take player's money.
-	public void takeMoney()
+	public void moneyTake()
 	{
 		this.money = this.money - this.bet;
+	}
+	
+	// Returns the player name. 
+	public String nameGet()
+	{
+		return this.name;
+	}
+	
+	// Sets the name. 
+	public void nameSet(String name)
+	{
+		this.name = name;
 	}
 
 	// Get the name of the buster and output the message.
@@ -72,11 +60,17 @@ public class Player {
 	{
 		System.out.println(name + " busted!\n");
 	}
-	
+
 	// Get the name of the drawer and output the message.
 	public void whoDraws()
 	{
 		System.out.println(name + " draws...\n");
+	}
+	
+	// When the player hits.
+	public void whoHits()
+	{
+		System.out.println(name+ " hits.\n");
 	}
 	
 	// Get the name of the stander and output the message.
