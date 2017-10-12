@@ -6,40 +6,37 @@ import java.util.Scanner;
 
 public class MainGame
 {
-	static Scanner ui = new Scanner(System.in);
+	// Initialise scanner. 
+	private Scanner ui = new Scanner(System.in);
+	
 	// Initialise the classes.
-	static Deck playDeck = new Deck();
-	static Deck cardsPlayer = new Deck();
-	static Deck cardsOpponent = new Deck();	
-	static Player player = new Player();
-	static Player opponent = new Player();
+	private Deck playDeck = new Deck();
+	private Deck cardsPlayer = new Deck();
+	private Deck cardsOpponent = new Deck();	
+	private Player player = new Player();
+	private Player opponent = new Player();
 	
 	// Initialise standard booleans. 
-	static boolean playerTurn = false;
-	static boolean opponentTurn = false;
-	static boolean GameOver = false;
+	private boolean playerTurn = false;
+	private boolean opponentTurn = false;
+	private boolean GameOver = false;
 	
-	// High impact violence. 
-	public static void main(String[] args)
+	// Where the game actually starts.
+	// This is to avoid the STATIC thing.
+	MainGame(String pName, String oName)
 	{
-		// Initialise the scanner and display a welcome message. 
-		System.out.println("Welcome to the worst blackjack ever!\n");
-		System.out.println("What is your name?");
+		int moneyIn = 100;
+		player.moneySet(moneyIn);
 		
-		// User input. 
-		player.setName(ui.next());
-		
-		// Give the player the ability to choose the opponent's name. 
-		System.out.println("Name your opponent.");
-		
-		// User input. 
-		opponent.setName(ui.next());
+		// Set the player and opponent names.
+		player.nameSet(pName);
+		opponent.nameSet(oName);
 		
 		// Display the message and player's name and opponent's name. 
-		System.out.println("Welcome " + player.getName()+ "!\n You start off with " + player.getMoney() + ".\nYou're playing against: " + opponent.getName());
+		System.out.println("Welcome " + player.nameGet()+ "!\n You start off with " + player.moneyGet() + "$.\nYou're playing against: " + opponent.nameGet());
 		
 		// As long as the player has money and the game is not over...
-		while (player.getMoney() > 0 && !GameOver)
+		while (player.moneyGet() > 0 && !GameOver)
 		{
 			// Disable the booleans. 
 			opponentTurn = false;
@@ -71,7 +68,7 @@ public class MainGame
 		}
 		
 		// Display this message to the player. 
-		if (player.getMoney() <= 0)
+		if (player.moneyGet() <= 0)
 		{
 			System.out.println("You have no money to play.");
 			ui.close();
@@ -81,105 +78,83 @@ public class MainGame
 	}
 	
 	// Where the game starts after initial "impact". 
-	private static void gameStart()
+	private void gameStart()
 	{
-		// Create a new scanner for player input. 
-		
-		
 		// Ask the player how much they want to bet. 
 		System.out.println("How much would you like to bet?");
-		System.out.println("You have: " + player.getMoney());
+		System.out.println("Your money: " + player.moneyGet() + "$.\n");
 		
-		// Try to get the bet and money. 
-		/*try (Scanner uiGS = new Scanner(System.in);)
-		{
-			player.setBet(uiGS.nextInt());
-		}
-		catch (InputMismatchException e)
-		{
-			e.printStackTrace();
-		}*/
+		// Try to get the bet. 
+		int answer;
+		answer = ui.nextInt();
+		player.betSet(answer);
 		
-		String answer;
-		/*boolean betHolder=true;
-		
-		while (betHolder==true) {*/
-			answer = ui.next();
-			if (Character.isParsable(answer)) {
-				System.out.println("Please enter a valid bet number");
-			} else {
-				//betHolder=true;
-
-			//}
-		
-			
-		
-		
-		}
-		
-		
-		player.setBet(answer);
 		// If the player bet's too much, take their wallet. 
-		if (player.getBet() > player.getMoney())
+		while (player.betGet() > player.moneyGet())
 		{
 			System.out.println("You cannot bet more than what you have!");
+			answer = ui.nextInt();
+			player.betSet(answer);
 		}
 		
-		// Otherwise, don't take their wallet. 
-		else
+		// Display how much they're betting. 
+		System.out.println("You're betting: " + player.betGet() + "$, from your: " + player.moneyGet() + "$.\n");
+				
+		// But take their money!
+		player.moneyTake();
+		
+		// Create a deck of cards to play with. 
+		playDeck.FillDeckWithCards();
+		playDeck.shuffleDeck();	// Shuffle the cards. 
+		
+		// Display the message. 
+		System.out.println("Dealing cards...");
+		
+		// Now draw 2 cards for the player and the opponent from the deck. 
+		// Draw 2 cards for the player. 
+		cardsPlayer.cardDraw(playDeck);
+		cardsPlayer.cardDraw(playDeck);
+		
+		// Draw 2 cards for the opponent. 
+		cardsOpponent.cardDraw(playDeck);
+		cardsOpponent.cardDraw(playDeck);
+		
+		// Display player cards and the opponent's cards and display your value of cards. 
+		System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + " and " + cardsPlayer.cardGet(1).toString() + "\nYour deck is valued at: " + cardsPlayer.cardsValue());
+		System.out.println("Dealer hand: " + cardsOpponent.cardGet(0).toString() + " and 1 hidden.");
+		
+		// Check if the player wins at start. 
+		if (cardsPlayer.cardsValue() == 21)
 		{
-			// But take their money instead!
-			player.takeMoney();
-			
-			// Create a deck of cards to play with. 
-			playDeck.FillDeckWithCards();
-			playDeck.shuffleDeck();	// Shuffle the cards. 
-			
-			// Display the message. 
-			System.out.println("Dealing cards...");
-			
-			// Now draw 2 cards for the player and the opponent from the deck. 
-			// Draw 2 cards for the player. 
-			cardsPlayer.cardDraw(playDeck);
-			cardsPlayer.cardDraw(playDeck);
-			
-			// Draw 2 cards for the opponent. 
-			cardsOpponent.cardDraw(playDeck);
-			cardsOpponent.cardDraw(playDeck);
-			
-			// Display player cards and the opponent's cards and display your value of cards. 
-			System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + " and " + cardsPlayer.cardGet(1).toString() + "\nYour deck is valued at: " + cardsPlayer.cardsValue());
-			System.out.println("Dealer hand: " + cardsOpponent.cardGet(0).toString() + " and 1 hidden.");
-			
-			// Check if the player wins at strart. 
-			if (cardsPlayer.cardsValue() == 21)
-			{
-				player.whoWinner();
-				playerTurn = false;
-				opponentTurn = false;
-				player.giveMoney();
-				cardsPlayer.moveCardsToDeck(playDeck);
-				cardsOpponent.moveCardsToDeck(playDeck);
-			}
-			else if (cardsOpponent.cardsValue() == 21)
-			{
-				opponent.whoWinner();
-				playerTurn = false;
-				opponentTurn = false;
-				cardsPlayer.moveCardsToDeck(playDeck);
-				cardsOpponent.moveCardsToDeck(playDeck);
-			}
-			else 
-			{
-				// Start the player's turn. 
-				playerTurn = true;
-				playerTurn();
-			}
+			player.whoWinner();
+			playerTurn = false;
+			opponentTurn = false;
+			player.moneyGive();
+			cardsPlayer.moveCardsToDeck(playDeck);
+			cardsOpponent.moveCardsToDeck(playDeck);
+		}
+		
+		// Or if the opponent wins.
+		else if (cardsOpponent.cardsValue() == 21)
+		{
+			opponent.whoWinner();
+			playerTurn = false;
+			opponentTurn = false;
+			cardsPlayer.moveCardsToDeck(playDeck);
+			cardsOpponent.moveCardsToDeck(playDeck);
+		}
+		
+		// Otherwise let's get the game started. 
+		else 
+		{
+			// Start the player's turn. 
+			playerTurn = true;
+			playerTurn();
 		}
 	}
 
 	// Player's turn. 
-	private static void playerTurn()
+	private void playerTurn()
 	{
 		// Display player's turn. 
 		player.whoTurn();
@@ -213,7 +188,7 @@ public class MainGame
 	}
 	
 	// Player chooses hit. 
-	private static void playerHit()
+	private void playerHit()
 	{
 		// Draw a card. Display who is drawing. Display the card and value. 
 		cardsPlayer.cardDraw(playDeck);
@@ -231,19 +206,30 @@ public class MainGame
 			cardsPlayer.moveCardsToDeck(playDeck);
 			cardsOpponent.moveCardsToDeck(playDeck);
 		}
+		
+		// If the player gets blackjack.
+		else if (cardsPlayer.cardsValue() == 21)
+		{
+			player.whoWinner();
+			playerTurn = false;
+			opponentTurn = false;
+			cardsPlayer.moveCardsToDeck(playDeck);
+			cardsOpponent.moveCardsToDeck(playDeck);
+			player.moneyGive();
+		}
 	}
 	
 	// Player chooses stay. 
-	private static void playerStand()
+	private void playerStand()
 	{
 		// Display that you are standing, opponent's turn is now.
-		System.out.println(player.getName() + " stands.");
+		player.whoStands();
 		playerTurn = false;
 		opponentTurn = true;
 	}
 	
 	// Opponent's turn.
-	private static void opponentTurn()
+	private void opponentTurn()
 	{
 		// While it's the opponent's turn...
 		while (opponentTurn == true)
@@ -252,8 +238,8 @@ public class MainGame
 			opponent.whoTurn();
 	
 			// Show the hidden card and the deck value of the opponent. 
-			System.out.println(opponent.getName() + " reveals hidden card: " + cardsOpponent.cardGet(1).toString());
-			System.out.println("His deck is valued at: " + cardsOpponent.cardsValue());
+			System.out.println(opponent.nameGet() + " reveals hidden card: " + cardsOpponent.cardGet(1).toString());
+			System.out.println(opponent.nameGet() + "'s deck is valued at: " + cardsOpponent.cardsValue());
 				
 			// As long as the opponent's cards are not exceeding 17...
 			while (cardsOpponent.cardsValue() < 17)
@@ -270,8 +256,8 @@ public class MainGame
 				opponentTurn = false;
 				player.whoWinner();
 				playerTurn = false;
-				player.giveMoney();
-				System.out.println("You have: " + player.getMoney());
+				player.moneyGive();
+				System.out.println("You have now have: " + player.moneyGet() + "$.\n");
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
 			}
@@ -282,8 +268,8 @@ public class MainGame
 				player.whoWinner();
 				opponentTurn = false;
 				playerTurn = false;
-				player.giveMoney();
-				System.out.println("You have: " + player.getMoney());
+				player.moneyGive();
+				System.out.println("You have: " + player.moneyGet() + "$.\n");
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
 			}
@@ -301,10 +287,30 @@ public class MainGame
 	}
 	
 	// Display the message and quit the game when the player chooses Quit.
-	private static void gameQuit()
+	private void gameQuit()
 	{
-		System.out.println("See you next time!");
+		System.out.println("See you next time!\n");
 		GameOver = true;
 		System.exit(1);
+	}
+	
+	// High impact violence. 
+	public static void main(String[] args)
+	{
+		// Start a scanner SPECIFICALLy for this and close it. 
+		Scanner scanner = new Scanner(System.in);
+		
+		// Initialise the scanner and display a welcome message. 
+		System.out.println("Welcome to the worst blackjack ever!\n");
+		System.out.println("What is your name?");
+		String playerName = scanner.next();
+		
+		// Give the player the ability to choose the opponent's name. 
+		System.out.println("\nName your opponent.");
+		String opponentName = scanner.next();
+		
+		new lol(playerName, opponentName);
+		
+		scanner.close();
 	}
 }
