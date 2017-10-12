@@ -42,7 +42,7 @@ public class Player {
 	public void moneyGiveDoubleDown()
 	{
 		this.bet = 2*this.bet;
-		this.money = this.money + this.bet;
+		this.money = this.money + this.bet + this.bet;
 	}
 	
 	// Set the money.
