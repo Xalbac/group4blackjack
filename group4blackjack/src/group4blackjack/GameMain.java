@@ -43,16 +43,15 @@ public class GameMain
 			// Ask the player about the bet. 
 			System.out.println("How much would you like to bet?");
 			System.out.println("You have: " + money);
+			String betAmount = ui.next();
 			
-			try
-			{
-				bet = ui.nextInt();
-			}
-			catch (InputMismatchException e)
+			while (ui.hasNext("[A-Za-z]"))
 			{
 				// TODO: handle exception
 				System.out.println("please enter a valid bet number");
+				ui.next(betAmount);
 			}
+		
 			// Check if the bet is more or less than the money they currently have. 
 			if (bet > money)
 			{
@@ -72,6 +71,7 @@ public class GameMain
 				// Give cards to the dealer. 
 				cardsDealer.cardDraw(deckPlay);
 				cardsDealer.cardDraw(deckPlay);
+			}
 				
 				// Displayer the cards.
 				System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + " and " + cardsPlayer.cardGet(1).toString());
@@ -154,13 +154,14 @@ public class GameMain
 				cardsDealer.moveCardsToDeck(deckPlay);
 				System.out.println("End of hand");
 			}
-			
-		}
 		System.out.println("Game over!");
 		
-		ui.close();
-	}
+		ui.close();		
+		}
 }
+	
+
+
 	/*
 	// Initialise everything we need.
 	private static int money;									// User's money.
