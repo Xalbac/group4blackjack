@@ -83,20 +83,18 @@ public class lol
 		System.out.println("You have: " + player.getMoney());
 		
 		// Try to get the bet and money. 
-		
 		int answer;
 		answer = ui.nextInt();
-		
 		player.setBet(answer);
+		
 		// If the player bet's too much, take their wallet. 
-		if (player.getBet() > player.getMoney())
+		while (player.getBet() > player.getMoney())
 		{
 			System.out.println("You cannot bet more than what you have!");
+			answer = ui.nextInt();
+			player.setBet(answer);
 		}
 		
-		// Otherwise, don't take their wallet. 
-		else
-		{
 			// But take their money instead!
 			player.takeMoney();
 			
@@ -144,7 +142,6 @@ public class lol
 				playerTurn = true;
 				playerTurn();
 			}
-		}
 	}
 
 	// Player's turn. 
