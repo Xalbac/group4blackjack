@@ -312,7 +312,7 @@ public class MainGame
 		System.out.println("\nName your opponent.");
 		String opponentName = scanner.next();
 		
-		new lol(playerName, opponentName);
+		new MainGame(playerName, opponentName);
 		
 		scanner.close();
 	}
