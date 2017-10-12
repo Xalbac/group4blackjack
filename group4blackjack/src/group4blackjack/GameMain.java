@@ -32,10 +32,10 @@ public class GameMain
 		System.out.println("Welcome to the best blackjack ever!\n");
 		System.out.println("What is your name?");
 		String answer = ui.next();
-		player.setName(answer);
+		player.nameSet(answer);
 		
 		// Print out his name and his starting money.
-		System.out.println("Welcome " + player.getName());
+		System.out.println("Welcome " + player.nameGet());
 		
 		// As long as the player has money, allow them to play.
 		while (money > 0)
@@ -43,13 +43,13 @@ public class GameMain
 			// Ask the player about the bet. 
 			System.out.println("How much would you like to bet?");
 			System.out.println("You have: " + money);
-			int betAmount = ui.nextInt();
+			String betanswer = ui.next();
 			
-			while (ui.hasNextInt(betAmount))
+			while (ui.hasNext("[A-Za-z"))
 			{
 				// TODO: handle exception
 				System.out.println("please enter a valid bet number");
-				ui.nextInt(betAmount);
+				ui.next(betanswer);
 			}
 		
 			// Check if the bet is more or less than the money they currently have. 
