@@ -166,16 +166,17 @@ public class MainGame
 		// While it's player's turn...
 		while (playerTurn == true)
 		{
-			
+			// If double down is allowed. 
 			if (doubleDown == true)
 			{
 				// Ask the player what they want to do. 
 				System.out.println("Would you like to [H] Hit or [S] Stand or [D] Double Down? Double down ends your turn.");
-				
 				String answer = ui.next();
+				
 				// If the player chooses hit.
 				if (answer.equalsIgnoreCase("H"))
 				{
+					// Disable double down. 
 					doubleDown = false;
 					playerHit();
 				}
@@ -315,32 +316,43 @@ public class MainGame
 			opponent.whoTurn();
 	
 			// Show the hidden card and the deck value of the opponent. 
-			System.out.println(opponent.nameGet() + " reveals hidden card: " + cardsOpponent.cardGet(1).toString());
-			System.out.println(opponent.nameGet() + "'s deck is valued at: " + cardsOpponent.cardsValue());
+			System.out.println(opponent.nameGet() + " reveals hidden card: " + cardsOpponent.cardGet(1).toString());	// Display the hidden card.
+			System.out.println(opponent.nameGet() + "'s deck is valued at: " + cardsOpponent.cardsValue());				// Display the value of the deck. 
 				
 			// As long as the opponent's cards are not exceeding 17...
 			while (cardsOpponent.cardsValue() < 17)
 			{
+				// Display who draws. 
 				opponent.whoDraws();
-				cardsOpponent.cardDraw(playDeck);
-				System.out.println(cardsOpponent.cardGet(cardsOpponent.deckSize()-1).toString());
+				cardsOpponent.cardDraw(playDeck);	// Draw from this deck. 
+				System.out.println(cardsOpponent.cardGet(cardsOpponent.deckSize()-1).toString());				// Display the card.
+				System.out.println(opponent.nameGet() + "'s deck is valued at: " + cardsOpponent.cardsValue());	// Display the value of the deck. 
 			}
 			
 			// If the cards exceed value of 21. 
 			if (cardsOpponent.cardsValue() > 21)
 			{
+				// The opponent busted and display who won and who lost. 
 				opponent.whoBusted();
-				opponentTurn = false;
 				player.whoWinner(opponent.nameGet());
+				
+				// Disable the turns.
+				opponentTurn = false;
 				playerTurn = false;
+								
+				// If the double down is enabled. 
 				if (doubleDown == true)
 				{
 					player.moneyGiveDoubleDown();
 				}
+				
+				// If the double down is disabled. 
 				else
 				{
 					player.moneyGive();
 				}
+				
+				// Display the money you get and put the cards back. 
 				player.whoMoneyWinner();
 				cardsPlayer.moveCardsToDeck(playDeck);
 				cardsOpponent.moveCardsToDeck(playDeck);
@@ -381,6 +393,7 @@ public class MainGame
 	// Display the message and quit the game when the player chooses Quit.
 	private void gameQuit()
 	{
+		// Quit the game, POLITELY.
 		System.out.println("See you next time!\n");
 		GameOver = true;
 		System.exit(1);
@@ -401,8 +414,10 @@ public class MainGame
 		System.out.println("\nName your opponent.");
 		String opponentName = scanner.next();
 		
+		// Start the game with the given names. 
 		new MainGame(playerName, opponentName);
 		
+		// Close the scanner. 
 		scanner.close();
 	}
 }
