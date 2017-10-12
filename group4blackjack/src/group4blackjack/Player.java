@@ -22,7 +22,7 @@ public class Player {
 	// Take player's money.
 	public void takeMoney()
 	{
-		this.money -= this.bet;
+		this.money = this.money - this.bet;
 	}
 	
 	// Give the player money.
