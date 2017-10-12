@@ -84,8 +84,8 @@ public class lol
 		System.out.println("How much would you like to bet?");
 		System.out.println("Your money: " + player.moneyGet() + "$.\n");
 		
-		// Try to get the bet and money. 
-		int answer;
+		// Try to get the bet. 
+		int answer = 0;
 		answer = ui.nextInt();
 		player.betSet(answer);
 		
