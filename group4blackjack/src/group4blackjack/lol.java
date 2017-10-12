@@ -207,6 +207,7 @@ public class lol
 			cardsOpponent.moveCardsToDeck(playDeck);
 		}
 		
+		// If the player gets blackjack.
 		else if (cardsPlayer.cardsValue() == 21)
 		{
 			player.whoWinner();
