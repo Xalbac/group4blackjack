@@ -160,8 +160,6 @@ public class MainGame
 		// While it's player's turn...
 		while (playerTurn == true)
 		{
-			// Start a new scanner for user input. 
-			
 			// Ask the player what they want to do. 
 			System.out.println("Would you like to [H] Hit or [S] Stand?");
 			
