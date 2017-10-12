@@ -83,20 +83,20 @@ public class MainGame
 	private void gameStart()
 	{
 		// Ask the player how much they want to bet. 
-		System.out.println("How much would you like to bet?");
-		System.out.println("Your money: " + player.moneyGet() + "$.\n");
+		System.out.println("How much would you like to bet?");				// Display the message. 
+		System.out.println("Your money: " + player.moneyGet() + "$.\n");	// Display the money. 
 		
 		// Try to get the bet. 
-		int answer;
-		answer = ui.nextInt();
-		player.betSet(answer);
+		int bet;				// The bet. 
+		bet = ui.nextInt();		// User input. 
+		player.betSet(bet);		// The bet in the player class. 
 		
 		// If the player bet's too much, take their wallet. 
 		while (player.betGet() > player.moneyGet())
 		{
-			System.out.println("You cannot bet more than what you have!");
-			answer = ui.nextInt();
-			player.betSet(answer);
+			System.out.println("You cannot bet more than what you have!");	// Display the message. 
+			bet = ui.nextInt();												// User input. 
+			player.betSet(bet);												// The bet in the player class. 
 		}
 		
 		// Display how much they're betting. 
@@ -120,7 +120,7 @@ public class MainGame
 		
 		// Display player cards and the opponent's cards and display your value of cards. 
 		System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + " and " + cardsPlayer.cardGet(1).toString() + "\nYour deck is valued at: " + cardsPlayer.cardsValue());
-		System.out.println("Dealer hand: " + cardsOpponent.cardGet(0).toString() + " and 1 hidden.");
+		System.out.println("Dealer hand: " + cardsOpponent.cardGet(0).toString() + " and 1 hidden.\n");
 		
 		// Check if the player wins at start. 
 		if (cardsPlayer.cardsValue() == 21)
@@ -193,19 +193,23 @@ public class MainGame
 				{
 					// Player doubles down and it is opponent's turn right after. 
 					playerDoubleDown();		// Player's double down. 
-					opponentTurn();
+					opponentTurn();			// Opponent's turn. 
 				}
+				
+				// IF the player inputs something else. 
 				else
 				{
 					System.out.println("Please use either [P] or [S] or [D].");
 				}
 			}
+			
+			// If the double down is disabled. 
 			else
 			{
 				// Ask the player what they want to do. 
-				System.out.println("Would you like to [H] Hit or [S] Stand?");
+				System.out.println("Would you like to [H] Hit or [S] Stand?");	// Display the message. 
+				String answer = ui.next();										// User Input. 
 				
-				String answer = ui.next();
 				// If the player chooses hit.
 				if (answer.equalsIgnoreCase("H"))
 				{
@@ -215,9 +219,12 @@ public class MainGame
 				// If the player chooses stand. 
 				else if (answer.equalsIgnoreCase("S"))
 				{
-					playerStand();
-					opponentTurn();
+					// Stand the player and start opponent's turn. 
+					playerStand();		// Player stands.
+					opponentTurn();		// Opponent's turn. 
 				}
+				
+				// If the player typed something else. 
 				else
 				{
 					System.out.println("Please use either [P] or [S].");
