@@ -153,7 +153,7 @@ public class MainGame
 		while (playerTurn == true)
 		{
 			// If double down is allowed. 
-			if (doubleDown == true)
+			if (doubleDown == true && cardsPlayer.cardsValue() < 13)
 			{
 				// Ask the player what they want to do. 
 				System.out.println("Would you like to [H] Hit or [S] Stand or [D] Double Down? Double down ends your turn.");	// Display the message. 
@@ -177,7 +177,7 @@ public class MainGame
 				}
 				
 				// If the player chooses Double Down.
-				else if (answer.equalsIgnoreCase("D") && cardsPlayer.cardsValue() < 13)
+				else if (answer.equalsIgnoreCase("D"))
 				{
 					// Player doubles down and it is opponent's turn right after. 
 					playerDoubleDown();		// Player's double down. 
@@ -215,7 +215,7 @@ public class MainGame
 				// If the player typed something else. 
 				else
 				{
-					System.out.println("Please use either [P] or [S].");
+					System.out.println("Please use either [H] or [S].");
 				}
 			}
 		}
