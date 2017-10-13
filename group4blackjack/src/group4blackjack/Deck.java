@@ -43,7 +43,7 @@ public class Deck
 		// The size of our deck. 
 		int originalSizeofDeck = this.cards.size();
 		
-		// Shuffle each card individualy in the deck. 
+		// Shuffle each card individually in the deck. 
 		for (int i = 0; i < originalSizeofDeck; i++)
 		{
 			indexrandom = random.nextInt((this.cards.size() - 1 - 0) + 1) + 0;
