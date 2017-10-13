@@ -3,22 +3,10 @@ package group4blackjack;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Deck
+public class Deck extends enumclass
 {
 	// Create an array list for cards. 
 	private ArrayList<Card> cards;
-
-	// Enum table for Suits.
-	protected enum Suits
-	{
-		SPADES, HEARTS, DIAMONDS, CLUBS;
-	}
-
-	// Enum table for Ranks.
-	protected enum Ranks
-	{
-		ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
-	}
 
 	// Create a deck,
 	public Deck()
