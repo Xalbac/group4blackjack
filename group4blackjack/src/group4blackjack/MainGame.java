@@ -132,18 +132,7 @@ public class MainGame
 			cardsPlayer.moveCardsToDeck(playDeck);
 			cardsOpponent.moveCardsToDeck(playDeck);
 		}
-		
-		// Or if the opponent wins.
-		else if (cardsOpponent.cardsValue() == 21)
-		{
-			opponent.whoWinner(player.nameGet());
-			playerTurn = false;
-			opponentTurn = false;
-			cardsPlayer.moveCardsToDeck(playDeck);
-			cardsOpponent.moveCardsToDeck(playDeck);
-			player.whoMoneyLoser();
-		}
-		
+				
 		// Otherwise let's get the game started. 
 		else 
 		{
@@ -349,6 +338,17 @@ public class MainGame
 			System.out.println(opponent.nameGet() + " reveals hidden card: " + cardsOpponent.cardGet(1).toString());	// Display the hidden card.
 			System.out.println(opponent.nameGet() + "'s deck is valued at: " + cardsOpponent.cardsValue());				// Display the value of the deck. 
 				
+			// Check if the opponent wins after revealing his cards.
+			if (cardsOpponent.cardsValue() == 21)
+			{
+				opponent.whoWinner(player.nameGet());
+				playerTurn = false;
+				opponentTurn = false;
+				cardsPlayer.moveCardsToDeck(playDeck);
+				cardsOpponent.moveCardsToDeck(playDeck);
+				player.whoMoneyLoser();
+			}
+			
 			// As long as the opponent's cards are not exceeding 17...
 			while (cardsOpponent.cardsValue() < 17)
 			{
