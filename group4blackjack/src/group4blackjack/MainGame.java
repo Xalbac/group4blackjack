@@ -411,7 +411,9 @@ public class MainGame
 				opponent.whoWinner(player.nameGet());	// Display winner and loser.
 				player.whoMoneyLoser();					// Display the money.
 			}
-			else if (cardsOpponent.cardsValue() == 21)
+			
+			// Else if he has blackjack.
+			else if (cardsOpponent.cardsValue() == 21 && cardsOpponent.cardsValue() > cardsPlayer.cardsValue())
 			{
 				// Display the winner and loser and the money.
 				opponent.whoWinner(player.nameGet());	// Display winner and loser.
