@@ -1,5 +1,6 @@
 package group4blackjack;
 
+import java.util.InputMismatchException;
 // Imports. 
 import java.util.Scanner;
 
@@ -85,60 +86,68 @@ public class MainGame
 		System.out.println("How much would you like to bet?");				// Display the message. 
 		System.out.println("Your money: " + player.moneyGet() + "$.\n");	// Display the money. 
 		
+		int bet;
+		
 		// Try to get the bet. 
-		int bet;				// The bet. 
-		bet = ui.nextInt();		// User input. 
-		player.betSet(bet);		// The bet in the player class. 
-		
-		// If the player bet's too much, take their wallet. 
-		while (player.betGet() > player.moneyGet())
+		try
 		{
-			System.out.println("You cannot bet more than what you have!");	// Display the message. 
-			bet = ui.nextInt();												// User input. 
-			player.betSet(bet);												// The bet in the player class. 
+			bet = ui.nextInt();		// User input. 
+			player.betSet(bet);		// The bet in the player class. 
+
+			// If the player bet's too much, take their wallet. 
+			while (player.betGet() > player.moneyGet())
+			{
+				System.out.println("You cannot bet more than what you have!");	// Display the message. 
+				bet = ui.nextInt();												// User input. 
+				player.betSet(bet);												// The bet in the player class. 
+			}
+			
+			// Display how much they're betting. 
+			player.playerBet();
+			
+			// Create a deck of cards to play with and shuffle the cards.
+			playDeck.FillDeckWithCards();
+			playDeck.shuffleDeck();
+			
+			// Display the message. 
+			System.out.println("Dealing cards...");
+			
+			// Now draw 2 cards for the player and the opponent from the deck. 
+			// Draw 2 cards for the player. 
+			cardsPlayer.cardDraw(playDeck);
+			cardsPlayer.cardDraw(playDeck);
+			
+			// Draw 2 cards for the opponent. 
+			cardsOpponent.cardDraw(playDeck);
+			cardsOpponent.cardDraw(playDeck);
+			
+			// Display player cards and the opponent's cards and display your value of cards. 
+			System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + " and " + cardsPlayer.cardGet(1).toString() + "\nYour deck is valued at: " + cardsPlayer.cardsValue());
+			System.out.println("Dealer hand: " + cardsOpponent.cardGet(0).toString() + " and 1 hidden.\n");
+			
+			// Check if the player wins at start. 
+			if (cardsPlayer.cardsValue() == 21)
+			{
+				player.whoWinner(opponent.nameGet());
+				playerTurn = false;
+				opponentTurn = false;
+				player.moneyGive();
+				player.whoMoneyWinner();
+				cardsPlayer.moveCardsToDeck(playDeck);
+				cardsOpponent.moveCardsToDeck(playDeck);
+			}
+					
+			// Otherwise let's get the game started. 
+			else 
+			{
+				// Start the player's turn. 
+				playerTurn = true;
+				playerTurn();
+			}
 		}
-		
-		// Display how much they're betting. 
-		player.playerBet();
-		
-		// Create a deck of cards to play with and shuffle the cards.
-		playDeck.FillDeckWithCards();
-		playDeck.shuffleDeck();
-		
-		// Display the message. 
-		System.out.println("Dealing cards...");
-		
-		// Now draw 2 cards for the player and the opponent from the deck. 
-		// Draw 2 cards for the player. 
-		cardsPlayer.cardDraw(playDeck);
-		cardsPlayer.cardDraw(playDeck);
-		
-		// Draw 2 cards for the opponent. 
-		cardsOpponent.cardDraw(playDeck);
-		cardsOpponent.cardDraw(playDeck);
-		
-		// Display player cards and the opponent's cards and display your value of cards. 
-		System.out.println("Your cards: " + cardsPlayer.cardGet(0).toString() + " and " + cardsPlayer.cardGet(1).toString() + "\nYour deck is valued at: " + cardsPlayer.cardsValue());
-		System.out.println("Dealer hand: " + cardsOpponent.cardGet(0).toString() + " and 1 hidden.\n");
-		
-		// Check if the player wins at start. 
-		if (cardsPlayer.cardsValue() == 21)
+		catch (InputMismatchException e)
 		{
-			player.whoWinner(opponent.nameGet());
-			playerTurn = false;
-			opponentTurn = false;
-			player.moneyGive();
-			player.whoMoneyWinner();
-			cardsPlayer.moveCardsToDeck(playDeck);
-			cardsOpponent.moveCardsToDeck(playDeck);
-		}
-				
-		// Otherwise let's get the game started. 
-		else 
-		{
-			// Start the player's turn. 
-			playerTurn = true;
-			playerTurn();
+			System.out.println("Please bet in numbers!");
 		}
 	}
 
