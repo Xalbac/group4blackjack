@@ -3,7 +3,7 @@ package group4blackjack;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Deck 
+public class Deck
 {
 	// Create an array list for cards. 
 	private ArrayList<Card> cards;
