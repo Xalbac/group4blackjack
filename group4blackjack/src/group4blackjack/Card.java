@@ -1,9 +1,6 @@
 package group4blackjack;
 
-import group4blackjack.Deck.Ranks;
-import group4blackjack.Deck.Suits;
-
-public class Card
+public class Card extends Deck
 {
 	private Suits suit;		// Initialise suits.
 	private Ranks value;	// Initialise ranks, or value. Why is it called ranks?
