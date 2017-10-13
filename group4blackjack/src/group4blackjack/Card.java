@@ -1,7 +1,5 @@
 package group4blackjack;
 
-
-
 public class Card extends enumclass
 {
 	private Suits suit;		// Initialise suits.

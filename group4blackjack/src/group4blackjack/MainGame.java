@@ -35,7 +35,7 @@ public class MainGame
 		opponent.nameSet(oName);
 		
 		// Display the message and player's name and opponent's name. 
-		System.out.println("Welcome " + player.nameGet()+ "!\n You start off with " + player.moneyGet() + "$.\nYou're playing against: " + opponent.nameGet());
+		System.out.println("Welcome " + player.nameGet()+ "!\nYou start off with " + player.moneyGet() + "$.\nYou're playing against: " + opponent.nameGet());
 		
 		// As long as the player has money and the game is not over...
 		while (player.moneyGet() > 0 && !GameOver)

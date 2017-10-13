@@ -3,7 +3,7 @@ package group4blackjack;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Deck extends enumclass
+public class Deck
 {
 	// Create an array list for cards. 
 	private ArrayList<Card> cards;
@@ -19,10 +19,10 @@ public class Deck extends enumclass
 	public void FillDeckWithCards()
 	{
 		// Loop through the suits.
-		for (Suits cardSuits : Suits.values())
+		for (enumclass.Suits cardSuits : enumclass.Suits.values())
 		{
 			// Loop through the ranks.
-			for (Ranks cardRank : Ranks.values())
+			for (enumclass.Ranks cardRank : enumclass.Ranks.values())
 			{
 				// Add new card.
 				this.cards.add(new Card(cardSuits, cardRank));
