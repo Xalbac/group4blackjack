@@ -198,7 +198,7 @@ public class MainGame
 				// IF the player inputs something else. 
 				else
 				{
-					System.out.println("Please use either [P] or [S] or [D].");
+					System.out.println("Please use either [H] or [S] or [D].");
 				}
 			}
 			
