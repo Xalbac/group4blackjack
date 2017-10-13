@@ -188,7 +188,7 @@ public class MainGame
 				}
 				
 				// If the player chooses Double Down.
-				else if (answer.equalsIgnoreCase("D"))
+				else if (answer.equalsIgnoreCase("D") && cardsPlayer.cardsValue() < 13)
 				{
 					// Player doubles down and it is opponent's turn right after. 
 					playerDoubleDown();		// Player's double down. 
