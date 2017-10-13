@@ -2,13 +2,6 @@ package group4blackjack;
 
 public class Player {
 	
-	/*
-	* WROTE BY A MADMAN FUELED BY TEA AND VODKA
-	* Damian "AK-47" "Vodka" Wozniak.
-	* #racist
-	* Regrats, AK-47.
-	*/
-	
 	// Initialise the values.
 	private int bet;
 	private int money;
